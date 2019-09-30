@@ -4,7 +4,7 @@ title: Reading List
 permalink: /reading_list/
 ---
 
-Here is a list of the books, courses I have completed or intend on reading.
+Here is a list of the books and courses I have completed or intend on reading:
 
 [Bayesian Data Analysis 3rd ed. Gelman, Carlin, Stern, Dunson, Vehtari, Rubin](http://www.stat.columbia.edu/~gelman/book/) -- Currently reading in conjunction with [Aki Vehtari's course](https://github.com/avehtari/BDA_course_Aalto)
 
