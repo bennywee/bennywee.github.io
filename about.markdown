@@ -8,6 +8,6 @@ My name is Ben and I'm a data scientist in Melbourne. I am interested in bayesia
 
 I completed an Honours degree in economics from the University of Melbourne. I was previously a research and teaching assistant (tutor) in the economics department, where I taught undergraduate classes in statistics and econometrics.
 
-Currently I am working as a data scientist in the telco industry, learning about the demands of data scientists as a profession and expectations within a commercial landscape. I intend to document my learnings coming from a social science background in future blog posts -- what I wish I learned before starting work, what I actually learned and the varying perceptions of what statistics, data science, machine learning and artificial intelligence means to different people.
+I am currently a data scientist in the telco industry, learning about the demands of data science as a profession in a commercial landscape. I intend to document my learnings coming from a social science background  -- what I wish I learned before starting work, what I learned on the job and the varying perceptions of what statistics, machine learning and artificial intelligence means to different people.
 
-This blog is to document my learnings and projects as I progress through the world of "data science". Constructive comments, thoughts and criticisms are welcome. I hope to learn by interacting with the rest of the world and in turn, I hope you gain something out of it too.
+This blog is to record my learnings and projects as I progress through the world of "data science". Constructive comments, thoughts and criticisms are welcome. I hope to learn by interacting with the rest of the world and in turn, I hope you gain something out of it too.
