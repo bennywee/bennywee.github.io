@@ -18,8 +18,11 @@ Here is a list of the books and courses I have completed or intend on reading:
 
 [Discrete Choice Methods with Simulation. Train](https://eml.berkeley.edu/books/choice2.html)
 
+[Bayesian Statistics for the Social Sciences, Ben Goodrich](https://www.youtube.com/playlist?list=PLSZp9QshJ8wyPCgoQR0Kw3HDNuy1FEZH9)
+
+[Statistical Rethinking 2nd ed. McElreath](https://xcelab.net/rm/statistical-rethinking/) - Finishing some off some of the [problem sets](https://github.com/bennywee/rethinking_notes) in the first edition, waiting to get my hands on the second!
+
 # Waiting to be published
-[Statistical Rethinking 2nd ed. McElreath](https://xcelab.net/rm/statistical-rethinking/) - Finished the first edition, absolutely incredible. Cannot wait for round 2!
 
 [Regression and Other Stories. Gelman, Hill, Vehtari](http://www.stat.columbia.edu/~gelman/regression/) - Part of expanded 2nd edition of [Data Analysis Using Regression and Multilevel/Hierarchical Models](http://www.stat.columbia.edu/~gelman/arm/)
 
