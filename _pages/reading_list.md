@@ -8,7 +8,7 @@ Here is a list of the books and courses I have completed or intend on reading:
 
 [Bayesian Data Analysis 3rd ed. Gelman, Carlin, Stern, Dunson, Vehtari, Rubin](http://www.stat.columbia.edu/~gelman/book/) -- In conjunction with [Aki Vehtari's course](https://github.com/avehtari/BDA_course_Aalto)
 
-[Statistical Rethinking 2nd ed. McElreath](https://xcelab.net/rm/statistical-rethinking/) - [Completed problem] sets mostly in PyMC3 and Stan + some R for 1st ed(https://github.com/bennywee/rethinking_notes)
+[Statistical Rethinking 2nd ed. McElreath](https://xcelab.net/rm/statistical-rethinking/) - [Completed problem](https://github.com/bennywee/rethinking_notes) sets mostly in PyMC3 and Stan + some R for 1st ed
 
 [Michael Betancourt's tutorials and case studies](https://betanalpha.github.io/writing/)
 
