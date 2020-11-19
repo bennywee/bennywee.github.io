@@ -6,7 +6,7 @@ author_profile: true
 
 # Blog Posts
 
-## Nov 17, 2020
+## Nov 19, 2020
 
 [Applying a Bayesian Workflow - Lessons from Statistical Rethinking (I)](/assets/posts/applying_a_bayesian_workflow_pt1_post.html)
 ======
