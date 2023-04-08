@@ -1,0 +1,23 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/bennywee
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/BenwWee
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/benjamin-wee3
+
+---
+
+Hi! My name is Ben and I’m a data scientist in Melbourne looking to pivot into software and data engineering. I am interested in (too) many things. I love learning about Bayesian statistics, econometrics and data storytelling through modelling and visualisations. I also love building things with code and working with others to solve problems. 
+
+I have spent the past 5 years working as a data scientist in industry. More recently I have found myself enjoying collaborating closely with data and machine learning engineers - learning about how to build and support production systems (machine learning models as well as data pipelines). I hope to continue doing this as I look to shift my career into the engineering space.
+
+I am currently studying a Masters of Applied Econometrics at Monash University, beginning in 2022 and studying part-time. Previously I completed an Honours degree in Economics from the University of Melbourne. I was also a research and teaching assistant (tutor) in the Economics department, teaching undergraduate classes in statistics and econometrics.
