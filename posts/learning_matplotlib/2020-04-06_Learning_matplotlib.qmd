@@ -2,6 +2,9 @@
 title: 'Learning Matplotlib - Lessons from a ggplot user'
 author: "Benjamin Wee"
 date: "2020/04/06"
+categories:
+  - python
+  - matplotlib
 ---
 
 # You never forget your first

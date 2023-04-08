@@ -2,6 +2,11 @@
 title: "Applying a bayesian workflow: lessons from Statistical Rethinking (I)"
 author: "Benjamin Wee"
 date: "2020/11/21"
+categories:
+  - Bayesian statistics
+  - R
+  - Python
+  - Stan
 format:
   html:
     toc: true
