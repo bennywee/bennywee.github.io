@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.313">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,10 +19,9 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -49,13 +48,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -113,34 +142,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <span class="navbar-title">Benjamin Wee</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
+    <a class="nav-link" href="../../blog.html">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/bennywee" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/bennywee"><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/BenwWee" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/BenwWee"><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/benjamin-wee3" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/benjamin-wee3"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
+              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -256,86 +283,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    .head()<span class="op">\</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    .style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
+
 <style type="text/css">
 </style>
-
-<table id="T_4f554" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_4f554_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">date</th>
-<th id="T_4f554_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">cname</th>
-<th id="T_4f554_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">iso3</th>
-<th id="T_4f554_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">cases</th>
-<th id="T_4f554_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">deaths</th>
-<th id="T_4f554_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">cu_cases</th>
-<th id="T_4f554_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">cu_deaths</th>
-<th id="T_4f554_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">days_elapsed</th>
-<th id="T_4f554_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">end_label</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_4f554_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">2205</td>
-<td id="T_4f554_row0_col0" class="data row0 col0">2020-04-06</td>
-<td id="T_4f554_row0_col1" class="data row0 col1">Viet Nam</td>
-<td id="T_4f554_row0_col2" class="data row0 col2">VNM</td>
-<td id="T_4f554_row0_col3" class="data row0 col3">1</td>
-<td id="T_4f554_row0_col4" class="data row0 col4">0</td>
-<td id="T_4f554_row0_col5" class="data row0 col5">241</td>
-<td id="T_4f554_row0_col6" class="data row0 col6">0</td>
-<td id="T_4f554_row0_col7" class="data row0 col7">14</td>
-<td id="T_4f554_row0_col8" class="data row0 col8">Viet Nam</td>
-</tr>
-<tr class="even">
-<td id="T_4f554_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">2146</td>
-<td id="T_4f554_row1_col0" class="data row1 col0">2020-04-06</td>
-<td id="T_4f554_row1_col1" class="data row1 col1">Jordan</td>
-<td id="T_4f554_row1_col2" class="data row1 col2">JOR</td>
-<td id="T_4f554_row1_col3" class="data row1 col3">22</td>
-<td id="T_4f554_row1_col4" class="data row1 col4">0</td>
-<td id="T_4f554_row1_col5" class="data row1 col5">345</td>
-<td id="T_4f554_row1_col6" class="data row1 col6">5</td>
-<td id="T_4f554_row1_col7" class="data row1 col7">13</td>
-<td id="T_4f554_row1_col8" class="data row1 col8">Jordan</td>
-</tr>
-<tr class="odd">
-<td id="T_4f554_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2118</td>
-<td id="T_4f554_row2_col0" class="data row2 col0">2020-04-06</td>
-<td id="T_4f554_row2_col1" class="data row2 col1">Denmark</td>
-<td id="T_4f554_row2_col2" class="data row2 col2">DNK</td>
-<td id="T_4f554_row2_col3" class="data row2 col3">292</td>
-<td id="T_4f554_row2_col4" class="data row2 col4">18</td>
-<td id="T_4f554_row2_col5" class="data row2 col5">4369</td>
-<td id="T_4f554_row2_col6" class="data row2 col6">179</td>
-<td id="T_4f554_row2_col7" class="data row2 col7">27</td>
-<td id="T_4f554_row2_col8" class="data row2 col8">Denmark</td>
-</tr>
-<tr class="even">
-<td id="T_4f554_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">2119</td>
-<td id="T_4f554_row3_col0" class="data row3 col0">2020-04-06</td>
-<td id="T_4f554_row3_col1" class="data row3 col1">Dominican Republic</td>
-<td id="T_4f554_row3_col2" class="data row3 col2">DOM</td>
-<td id="T_4f554_row3_col3" class="data row3 col3">167</td>
-<td id="T_4f554_row3_col4" class="data row3 col4">5</td>
-<td id="T_4f554_row3_col5" class="data row3 col5">1745</td>
-<td id="T_4f554_row3_col6" class="data row3 col6">82</td>
-<td id="T_4f554_row3_col7" class="data row3 col7">15</td>
-<td id="T_4f554_row3_col8" class="data row3 col8">Dominican Republic</td>
-</tr>
-<tr class="odd">
-<td id="T_4f554_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">2120</td>
-<td id="T_4f554_row4_col0" class="data row4 col0">2020-04-06</td>
-<td id="T_4f554_row4_col1" class="data row4 col1">Ecuador</td>
-<td id="T_4f554_row4_col2" class="data row4 col2">ECU</td>
-<td id="T_4f554_row4_col3" class="data row4 col3">181</td>
-<td id="T_4f554_row4_col4" class="data row4 col4">8</td>
-<td id="T_4f554_row4_col5" class="data row4 col5">3646</td>
-<td id="T_4f554_row4_col6" class="data row4 col6">180</td>
-<td id="T_4f554_row4_col7" class="data row4 col7">19</td>
-<td id="T_4f554_row4_col8" class="data row4 col8">Ecuador</td>
-</tr>
-</tbody>
+<table id="T_4f554">
+  <thead>
+    <tr>
+      <th class="blank level0">&nbsp;</th>
+      <th id="T_4f554_level0_col0" class="col_heading level0 col0">date</th>
+      <th id="T_4f554_level0_col1" class="col_heading level0 col1">cname</th>
+      <th id="T_4f554_level0_col2" class="col_heading level0 col2">iso3</th>
+      <th id="T_4f554_level0_col3" class="col_heading level0 col3">cases</th>
+      <th id="T_4f554_level0_col4" class="col_heading level0 col4">deaths</th>
+      <th id="T_4f554_level0_col5" class="col_heading level0 col5">cu_cases</th>
+      <th id="T_4f554_level0_col6" class="col_heading level0 col6">cu_deaths</th>
+      <th id="T_4f554_level0_col7" class="col_heading level0 col7">days_elapsed</th>
+      <th id="T_4f554_level0_col8" class="col_heading level0 col8">end_label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_4f554_level0_row0" class="row_heading level0 row0">2205</th>
+      <td id="T_4f554_row0_col0" class="data row0 col0">2020-04-06</td>
+      <td id="T_4f554_row0_col1" class="data row0 col1">Viet Nam</td>
+      <td id="T_4f554_row0_col2" class="data row0 col2">VNM</td>
+      <td id="T_4f554_row0_col3" class="data row0 col3">1</td>
+      <td id="T_4f554_row0_col4" class="data row0 col4">0</td>
+      <td id="T_4f554_row0_col5" class="data row0 col5">241</td>
+      <td id="T_4f554_row0_col6" class="data row0 col6">0</td>
+      <td id="T_4f554_row0_col7" class="data row0 col7">14</td>
+      <td id="T_4f554_row0_col8" class="data row0 col8">Viet Nam</td>
+    </tr>
+    <tr>
+      <th id="T_4f554_level0_row1" class="row_heading level0 row1">2146</th>
+      <td id="T_4f554_row1_col0" class="data row1 col0">2020-04-06</td>
+      <td id="T_4f554_row1_col1" class="data row1 col1">Jordan</td>
+      <td id="T_4f554_row1_col2" class="data row1 col2">JOR</td>
+      <td id="T_4f554_row1_col3" class="data row1 col3">22</td>
+      <td id="T_4f554_row1_col4" class="data row1 col4">0</td>
+      <td id="T_4f554_row1_col5" class="data row1 col5">345</td>
+      <td id="T_4f554_row1_col6" class="data row1 col6">5</td>
+      <td id="T_4f554_row1_col7" class="data row1 col7">13</td>
+      <td id="T_4f554_row1_col8" class="data row1 col8">Jordan</td>
+    </tr>
+    <tr>
+      <th id="T_4f554_level0_row2" class="row_heading level0 row2">2118</th>
+      <td id="T_4f554_row2_col0" class="data row2 col0">2020-04-06</td>
+      <td id="T_4f554_row2_col1" class="data row2 col1">Denmark</td>
+      <td id="T_4f554_row2_col2" class="data row2 col2">DNK</td>
+      <td id="T_4f554_row2_col3" class="data row2 col3">292</td>
+      <td id="T_4f554_row2_col4" class="data row2 col4">18</td>
+      <td id="T_4f554_row2_col5" class="data row2 col5">4369</td>
+      <td id="T_4f554_row2_col6" class="data row2 col6">179</td>
+      <td id="T_4f554_row2_col7" class="data row2 col7">27</td>
+      <td id="T_4f554_row2_col8" class="data row2 col8">Denmark</td>
+    </tr>
+    <tr>
+      <th id="T_4f554_level0_row3" class="row_heading level0 row3">2119</th>
+      <td id="T_4f554_row3_col0" class="data row3 col0">2020-04-06</td>
+      <td id="T_4f554_row3_col1" class="data row3 col1">Dominican Republic</td>
+      <td id="T_4f554_row3_col2" class="data row3 col2">DOM</td>
+      <td id="T_4f554_row3_col3" class="data row3 col3">167</td>
+      <td id="T_4f554_row3_col4" class="data row3 col4">5</td>
+      <td id="T_4f554_row3_col5" class="data row3 col5">1745</td>
+      <td id="T_4f554_row3_col6" class="data row3 col6">82</td>
+      <td id="T_4f554_row3_col7" class="data row3 col7">15</td>
+      <td id="T_4f554_row3_col8" class="data row3 col8">Dominican Republic</td>
+    </tr>
+    <tr>
+      <th id="T_4f554_level0_row4" class="row_heading level0 row4">2120</th>
+      <td id="T_4f554_row4_col0" class="data row4 col0">2020-04-06</td>
+      <td id="T_4f554_row4_col1" class="data row4 col1">Ecuador</td>
+      <td id="T_4f554_row4_col2" class="data row4 col2">ECU</td>
+      <td id="T_4f554_row4_col3" class="data row4 col3">181</td>
+      <td id="T_4f554_row4_col4" class="data row4 col4">8</td>
+      <td id="T_4f554_row4_col5" class="data row4 col5">3646</td>
+      <td id="T_4f554_row4_col6" class="data row4 col6">180</td>
+      <td id="T_4f554_row4_col7" class="data row4 col7">19</td>
+      <td id="T_4f554_row4_col8" class="data row4 col8">Ecuador</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 </div>
@@ -370,385 +397,385 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display one of the dataframes</span></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>df_50.head().style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
+
 <style type="text/css">
 </style>
-
-<table id="T_151a2" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="index_name level0" data-quarto-table-cell-role="th">cname</th>
-<th id="T_151a2_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Algeria</th>
-<th id="T_151a2_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Argentina</th>
-<th id="T_151a2_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Australia</th>
-<th id="T_151a2_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Austria</th>
-<th id="T_151a2_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Belgium</th>
-<th id="T_151a2_level0_col5" class="col_heading level0 col5" data-quarto-table-cell-role="th">Brazil</th>
-<th id="T_151a2_level0_col6" class="col_heading level0 col6" data-quarto-table-cell-role="th">Canada</th>
-<th id="T_151a2_level0_col7" class="col_heading level0 col7" data-quarto-table-cell-role="th">Chile</th>
-<th id="T_151a2_level0_col8" class="col_heading level0 col8" data-quarto-table-cell-role="th">China</th>
-<th id="T_151a2_level0_col9" class="col_heading level0 col9" data-quarto-table-cell-role="th">Colombia</th>
-<th id="T_151a2_level0_col10" class="col_heading level0 col10" data-quarto-table-cell-role="th">Czech Republic</th>
-<th id="T_151a2_level0_col11" class="col_heading level0 col11" data-quarto-table-cell-role="th">Denmark</th>
-<th id="T_151a2_level0_col12" class="col_heading level0 col12" data-quarto-table-cell-role="th">Dominican Republic</th>
-<th id="T_151a2_level0_col13" class="col_heading level0 col13" data-quarto-table-cell-role="th">Ecuador</th>
-<th id="T_151a2_level0_col14" class="col_heading level0 col14" data-quarto-table-cell-role="th">Finland</th>
-<th id="T_151a2_level0_col15" class="col_heading level0 col15" data-quarto-table-cell-role="th">France</th>
-<th id="T_151a2_level0_col16" class="col_heading level0 col16" data-quarto-table-cell-role="th">Germany</th>
-<th id="T_151a2_level0_col17" class="col_heading level0 col17" data-quarto-table-cell-role="th">Iceland</th>
-<th id="T_151a2_level0_col18" class="col_heading level0 col18" data-quarto-table-cell-role="th">India</th>
-<th id="T_151a2_level0_col19" class="col_heading level0 col19" data-quarto-table-cell-role="th">Indonesia</th>
-<th id="T_151a2_level0_col20" class="col_heading level0 col20" data-quarto-table-cell-role="th">Iran</th>
-<th id="T_151a2_level0_col21" class="col_heading level0 col21" data-quarto-table-cell-role="th">Ireland</th>
-<th id="T_151a2_level0_col22" class="col_heading level0 col22" data-quarto-table-cell-role="th">Israel</th>
-<th id="T_151a2_level0_col23" class="col_heading level0 col23" data-quarto-table-cell-role="th">Italy</th>
-<th id="T_151a2_level0_col24" class="col_heading level0 col24" data-quarto-table-cell-role="th">Japan</th>
-<th id="T_151a2_level0_col25" class="col_heading level0 col25" data-quarto-table-cell-role="th">Luxembourg</th>
-<th id="T_151a2_level0_col26" class="col_heading level0 col26" data-quarto-table-cell-role="th">Malaysia</th>
-<th id="T_151a2_level0_col27" class="col_heading level0 col27" data-quarto-table-cell-role="th">Mexico</th>
-<th id="T_151a2_level0_col28" class="col_heading level0 col28" data-quarto-table-cell-role="th">Netherlands</th>
-<th id="T_151a2_level0_col29" class="col_heading level0 col29" data-quarto-table-cell-role="th">Norway</th>
-<th id="T_151a2_level0_col30" class="col_heading level0 col30" data-quarto-table-cell-role="th">Pakistan</th>
-<th id="T_151a2_level0_col31" class="col_heading level0 col31" data-quarto-table-cell-role="th">Panama</th>
-<th id="T_151a2_level0_col32" class="col_heading level0 col32" data-quarto-table-cell-role="th">Peru</th>
-<th id="T_151a2_level0_col33" class="col_heading level0 col33" data-quarto-table-cell-role="th">Philippines</th>
-<th id="T_151a2_level0_col34" class="col_heading level0 col34" data-quarto-table-cell-role="th">Poland</th>
-<th id="T_151a2_level0_col35" class="col_heading level0 col35" data-quarto-table-cell-role="th">Portugal</th>
-<th id="T_151a2_level0_col36" class="col_heading level0 col36" data-quarto-table-cell-role="th">Qatar</th>
-<th id="T_151a2_level0_col37" class="col_heading level0 col37" data-quarto-table-cell-role="th">Romania</th>
-<th id="T_151a2_level0_col38" class="col_heading level0 col38" data-quarto-table-cell-role="th">Russian Federation</th>
-<th id="T_151a2_level0_col39" class="col_heading level0 col39" data-quarto-table-cell-role="th">Saudi Arabia</th>
-<th id="T_151a2_level0_col40" class="col_heading level0 col40" data-quarto-table-cell-role="th">Serbia</th>
-<th id="T_151a2_level0_col41" class="col_heading level0 col41" data-quarto-table-cell-role="th">South Africa</th>
-<th id="T_151a2_level0_col42" class="col_heading level0 col42" data-quarto-table-cell-role="th">South Korea</th>
-<th id="T_151a2_level0_col43" class="col_heading level0 col43" data-quarto-table-cell-role="th">Spain</th>
-<th id="T_151a2_level0_col44" class="col_heading level0 col44" data-quarto-table-cell-role="th">Sweden</th>
-<th id="T_151a2_level0_col45" class="col_heading level0 col45" data-quarto-table-cell-role="th">Switzerland</th>
-<th id="T_151a2_level0_col46" class="col_heading level0 col46" data-quarto-table-cell-role="th">Thailand</th>
-<th id="T_151a2_level0_col47" class="col_heading level0 col47" data-quarto-table-cell-role="th">Turkey</th>
-<th id="T_151a2_level0_col48" class="col_heading level0 col48" data-quarto-table-cell-role="th">USA</th>
-<th id="T_151a2_level0_col49" class="col_heading level0 col49" data-quarto-table-cell-role="th">United Arab Emirates</th>
-</tr>
-<tr class="odd">
-<th class="index_name level0" data-quarto-table-cell-role="th">days_elapsed</th>
-<th class="blank col0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col1" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col2" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col3" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col4" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col5" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col6" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col7" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col8" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col9" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col10" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col11" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col12" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col13" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col14" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col15" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col16" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col17" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col18" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col19" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col20" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col21" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col22" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col23" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col24" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col25" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col26" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col27" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col28" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col29" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col30" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col31" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col32" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col33" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col34" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col35" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col36" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col37" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col38" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col39" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col40" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col41" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col42" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col43" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col44" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col45" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col46" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col47" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col48" data-quarto-table-cell-role="th">&nbsp;</th>
-<th class="blank col49" data-quarto-table-cell-role="th">&nbsp;</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_151a2_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
-<td id="T_151a2_row0_col0" class="data row0 col0">102.000000</td>
-<td id="T_151a2_row0_col1" class="data row0 col1">128.000000</td>
-<td id="T_151a2_row0_col2" class="data row0 col2">100.000000</td>
-<td id="T_151a2_row0_col3" class="data row0 col3">102.000000</td>
-<td id="T_151a2_row0_col4" class="data row0 col4">109.000000</td>
-<td id="T_151a2_row0_col5" class="data row0 col5">121.000000</td>
-<td id="T_151a2_row0_col6" class="data row0 col6">103.000000</td>
-<td id="T_151a2_row0_col7" class="data row0 col7">156.000000</td>
-<td id="T_151a2_row0_col8" class="data row0 col8">216.000000</td>
-<td id="T_151a2_row0_col9" class="data row0 col9">102.000000</td>
-<td id="T_151a2_row0_col10" class="data row0 col10">116.000000</td>
-<td id="T_151a2_row0_col11" class="data row0 col11">113.000000</td>
-<td id="T_151a2_row0_col12" class="data row0 col12">112.000000</td>
-<td id="T_151a2_row0_col13" class="data row0 col13">111.000000</td>
-<td id="T_151a2_row0_col14" class="data row0 col14">155.000000</td>
-<td id="T_151a2_row0_col15" class="data row0 col15">100.000000</td>
-<td id="T_151a2_row0_col16" class="data row0 col16">111.000000</td>
-<td id="T_151a2_row0_col17" class="data row0 col17">117.000000</td>
-<td id="T_151a2_row0_col18" class="data row0 col18">125.000000</td>
-<td id="T_151a2_row0_col19" class="data row0 col19">117.000000</td>
-<td id="T_151a2_row0_col20" class="data row0 col20">139.000000</td>
-<td id="T_151a2_row0_col21" class="data row0 col21">129.000000</td>
-<td id="T_151a2_row0_col22" class="data row0 col22">116.000000</td>
-<td id="T_151a2_row0_col23" class="data row0 col23">132.000000</td>
-<td id="T_151a2_row0_col24" class="data row0 col24">105.000000</td>
-<td id="T_151a2_row0_col25" class="data row0 col25">140.000000</td>
-<td id="T_151a2_row0_col26" class="data row0 col26">117.000000</td>
-<td id="T_151a2_row0_col27" class="data row0 col27">118.000000</td>
-<td id="T_151a2_row0_col28" class="data row0 col28">128.000000</td>
-<td id="T_151a2_row0_col29" class="data row0 col29">113.000000</td>
-<td id="T_151a2_row0_col30" class="data row0 col30">187.000000</td>
-<td id="T_151a2_row0_col31" class="data row0 col31">109.000000</td>
-<td id="T_151a2_row0_col32" class="data row0 col32">117.000000</td>
-<td id="T_151a2_row0_col33" class="data row0 col33">111.000000</td>
-<td id="T_151a2_row0_col34" class="data row0 col34">104.000000</td>
-<td id="T_151a2_row0_col35" class="data row0 col35">112.000000</td>
-<td id="T_151a2_row0_col36" class="data row0 col36">262.000000</td>
-<td id="T_151a2_row0_col37" class="data row0 col37">113.000000</td>
-<td id="T_151a2_row0_col38" class="data row0 col38">114.000000</td>
-<td id="T_151a2_row0_col39" class="data row0 col39">118.000000</td>
-<td id="T_151a2_row0_col40" class="data row0 col40">126.000000</td>
-<td id="T_151a2_row0_col41" class="data row0 col41">116.000000</td>
-<td id="T_151a2_row0_col42" class="data row0 col42">155.000000</td>
-<td id="T_151a2_row0_col43" class="data row0 col43">114.000000</td>
-<td id="T_151a2_row0_col44" class="data row0 col44">137.000000</td>
-<td id="T_151a2_row0_col45" class="data row0 col45">209.000000</td>
-<td id="T_151a2_row0_col46" class="data row0 col46">114.000000</td>
-<td id="T_151a2_row0_col47" class="data row0 col47">191.000000</td>
-<td id="T_151a2_row0_col48" class="data row0 col48">103.000000</td>
-<td id="T_151a2_row0_col49" class="data row0 col49">113.000000</td>
-</tr>
-<tr class="even">
-<td id="T_151a2_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
-<td id="T_151a2_row1_col0" class="data row1 col0">189.000000</td>
-<td id="T_151a2_row1_col1" class="data row1 col1">158.000000</td>
-<td id="T_151a2_row1_col2" class="data row1 col2">112.000000</td>
-<td id="T_151a2_row1_col3" class="data row1 col3">131.000000</td>
-<td id="T_151a2_row1_col4" class="data row1 col4">169.000000</td>
-<td id="T_151a2_row1_col5" class="data row1 col5">200.000000</td>
-<td id="T_151a2_row1_col6" class="data row1 col6">138.000000</td>
-<td id="T_151a2_row1_col7" class="data row1 col7">201.000000</td>
-<td id="T_151a2_row1_col8" class="data row1 col8">235.000000</td>
-<td id="T_151a2_row1_col9" class="data row1 col9">128.000000</td>
-<td id="T_151a2_row1_col10" class="data row1 col10">150.000000</td>
-<td id="T_151a2_row1_col11" class="data row1 col11">264.000000</td>
-<td id="T_151a2_row1_col12" class="data row1 col12">202.000000</td>
-<td id="T_151a2_row1_col13" class="data row1 col13">168.000000</td>
-<td id="T_151a2_row1_col14" class="data row1 col14">nan</td>
-<td id="T_151a2_row1_col15" class="data row1 col15">130.000000</td>
-<td id="T_151a2_row1_col16" class="data row1 col16">129.000000</td>
-<td id="T_151a2_row1_col17" class="data row1 col17">117.000000</td>
-<td id="T_151a2_row1_col18" class="data row1 col18">137.000000</td>
-<td id="T_151a2_row1_col19" class="data row1 col19">134.000000</td>
-<td id="T_151a2_row1_col20" class="data row1 col20">245.000000</td>
-<td id="T_151a2_row1_col21" class="data row1 col21">169.000000</td>
-<td id="T_151a2_row1_col22" class="data row1 col22">178.000000</td>
-<td id="T_151a2_row1_col23" class="data row1 col23">229.000000</td>
-<td id="T_151a2_row1_col24" class="data row1 col24">132.000000</td>
-<td id="T_151a2_row1_col25" class="data row1 col25">210.000000</td>
-<td id="T_151a2_row1_col26" class="data row1 col26">129.000000</td>
-<td id="T_151a2_row1_col27" class="data row1 col27">164.000000</td>
-<td id="T_151a2_row1_col28" class="data row1 col28">188.000000</td>
-<td id="T_151a2_row1_col29" class="data row1 col29">147.000000</td>
-<td id="T_151a2_row1_col30" class="data row1 col30">187.000000</td>
-<td id="T_151a2_row1_col31" class="data row1 col31">137.000000</td>
-<td id="T_151a2_row1_col32" class="data row1 col32">145.000000</td>
-<td id="T_151a2_row1_col33" class="data row1 col33">140.000000</td>
-<td id="T_151a2_row1_col34" class="data row1 col34">125.000000</td>
-<td id="T_151a2_row1_col35" class="data row1 col35">169.000000</td>
-<td id="T_151a2_row1_col36" class="data row1 col36">nan</td>
-<td id="T_151a2_row1_col37" class="data row1 col37">139.000000</td>
-<td id="T_151a2_row1_col38" class="data row1 col38">147.000000</td>
-<td id="T_151a2_row1_col39" class="data row1 col39">133.000000</td>
-<td id="T_151a2_row1_col40" class="data row1 col40">135.000000</td>
-<td id="T_151a2_row1_col41" class="data row1 col41">150.000000</td>
-<td id="T_151a2_row1_col42" class="data row1 col42">345.000000</td>
-<td id="T_151a2_row1_col43" class="data row1 col43">151.000000</td>
-<td id="T_151a2_row1_col44" class="data row1 col44">161.000000</td>
-<td id="T_151a2_row1_col45" class="data row1 col45">264.000000</td>
-<td id="T_151a2_row1_col46" class="data row1 col46">177.000000</td>
-<td id="T_151a2_row1_col47" class="data row1 col47">359.000000</td>
-<td id="T_151a2_row1_col48" class="data row1 col48">125.000000</td>
-<td id="T_151a2_row1_col49" class="data row1 col49">113.000000</td>
-</tr>
-<tr class="odd">
-<td id="T_151a2_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
-<td id="T_151a2_row2_col0" class="data row2 col0">231.000000</td>
-<td id="T_151a2_row2_col1" class="data row2 col1">225.000000</td>
-<td id="T_151a2_row2_col2" class="data row2 col2">126.000000</td>
-<td id="T_151a2_row2_col3" class="data row2 col3">182.000000</td>
-<td id="T_151a2_row2_col4" class="data row2 col4">200.000000</td>
-<td id="T_151a2_row2_col5" class="data row2 col5">234.000000</td>
-<td id="T_151a2_row2_col6" class="data row2 col6">176.000000</td>
-<td id="T_151a2_row2_col7" class="data row2 col7">238.000000</td>
-<td id="T_151a2_row2_col8" class="data row2 col8">386.000000</td>
-<td id="T_151a2_row2_col9" class="data row2 col9">158.000000</td>
-<td id="T_151a2_row2_col10" class="data row2 col10">214.000000</td>
-<td id="T_151a2_row2_col11" class="data row2 col11">516.000000</td>
-<td id="T_151a2_row2_col12" class="data row2 col12">245.000000</td>
-<td id="T_151a2_row2_col13" class="data row2 col13">199.000000</td>
-<td id="T_151a2_row2_col14" class="data row2 col14">210.000000</td>
-<td id="T_151a2_row2_col15" class="data row2 col15">178.000000</td>
-<td id="T_151a2_row2_col16" class="data row2 col16">157.000000</td>
-<td id="T_151a2_row2_col17" class="data row2 col17">138.000000</td>
-<td id="T_151a2_row2_col18" class="data row2 col18">165.000000</td>
-<td id="T_151a2_row2_col19" class="data row2 col19">172.000000</td>
-<td id="T_151a2_row2_col20" class="data row2 col20">388.000000</td>
-<td id="T_151a2_row2_col21" class="data row2 col21">223.000000</td>
-<td id="T_151a2_row2_col22" class="data row2 col22">250.000000</td>
-<td id="T_151a2_row2_col23" class="data row2 col23">322.000000</td>
-<td id="T_151a2_row2_col24" class="data row2 col24">144.000000</td>
-<td id="T_151a2_row2_col25" class="data row2 col25">345.000000</td>
-<td id="T_151a2_row2_col26" class="data row2 col26">149.000000</td>
-<td id="T_151a2_row2_col27" class="data row2 col27">203.000000</td>
-<td id="T_151a2_row2_col28" class="data row2 col28">265.000000</td>
-<td id="T_151a2_row2_col29" class="data row2 col29">169.000000</td>
-<td id="T_151a2_row2_col30" class="data row2 col30">302.000000</td>
-<td id="T_151a2_row2_col31" class="data row2 col31">200.000000</td>
-<td id="T_151a2_row2_col32" class="data row2 col32">234.000000</td>
-<td id="T_151a2_row2_col33" class="data row2 col33">142.000000</td>
-<td id="T_151a2_row2_col34" class="data row2 col34">177.000000</td>
-<td id="T_151a2_row2_col35" class="data row2 col35">245.000000</td>
-<td id="T_151a2_row2_col36" class="data row2 col36">320.000000</td>
-<td id="T_151a2_row2_col37" class="data row2 col37">184.000000</td>
-<td id="T_151a2_row2_col38" class="data row2 col38">199.000000</td>
-<td id="T_151a2_row2_col39" class="data row2 col39">133.000000</td>
-<td id="T_151a2_row2_col40" class="data row2 col40">149.000000</td>
-<td id="T_151a2_row2_col41" class="data row2 col41">205.000000</td>
-<td id="T_151a2_row2_col42" class="data row2 col42">601.000000</td>
-<td id="T_151a2_row2_col43" class="data row2 col43">200.000000</td>
-<td id="T_151a2_row2_col44" class="data row2 col44">203.000000</td>
-<td id="T_151a2_row2_col45" class="data row2 col45">332.000000</td>
-<td id="T_151a2_row2_col46" class="data row2 col46">177.000000</td>
-<td id="T_151a2_row2_col47" class="data row2 col47">670.000000</td>
-<td id="T_151a2_row2_col48" class="data row2 col48">159.000000</td>
-<td id="T_151a2_row2_col49" class="data row2 col49">140.000000</td>
-</tr>
-<tr class="even">
-<td id="T_151a2_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
-<td id="T_151a2_row3_col0" class="data row3 col0">264.000000</td>
-<td id="T_151a2_row3_col1" class="data row3 col1">266.000000</td>
-<td id="T_151a2_row3_col2" class="data row3 col2">156.000000</td>
-<td id="T_151a2_row3_col3" class="data row3 col3">246.000000</td>
-<td id="T_151a2_row3_col4" class="data row3 col4">239.000000</td>
-<td id="T_151a2_row3_col5" class="data row3 col5">291.000000</td>
-<td id="T_151a2_row3_col6" class="data row3 col6">244.000000</td>
-<td id="T_151a2_row3_col7" class="data row3 col7">342.000000</td>
-<td id="T_151a2_row3_col8" class="data row3 col8">526.000000</td>
-<td id="T_151a2_row3_col9" class="data row3 col9">210.000000</td>
-<td id="T_151a2_row3_col10" class="data row3 col10">298.000000</td>
-<td id="T_151a2_row3_col11" class="data row3 col11">676.000000</td>
-<td id="T_151a2_row3_col12" class="data row3 col12">312.000000</td>
-<td id="T_151a2_row3_col13" class="data row3 col13">426.000000</td>
-<td id="T_151a2_row3_col14" class="data row3 col14">267.000000</td>
-<td id="T_151a2_row3_col15" class="data row3 col15">212.000000</td>
-<td id="T_151a2_row3_col16" class="data row3 col16">196.000000</td>
-<td id="T_151a2_row3_col17" class="data row3 col17">178.000000</td>
-<td id="T_151a2_row3_col18" class="data row3 col18">191.000000</td>
-<td id="T_151a2_row3_col19" class="data row3 col19">172.000000</td>
-<td id="T_151a2_row3_col20" class="data row3 col20">593.000000</td>
-<td id="T_151a2_row3_col21" class="data row3 col21">292.000000</td>
-<td id="T_151a2_row3_col22" class="data row3 col22">260.000000</td>
-<td id="T_151a2_row3_col23" class="data row3 col23">400.000000</td>
-<td id="T_151a2_row3_col24" class="data row3 col24">144.000000</td>
-<td id="T_151a2_row3_col25" class="data row3 col25">484.000000</td>
-<td id="T_151a2_row3_col26" class="data row3 col26">158.000000</td>
-<td id="T_151a2_row3_col27" class="data row3 col27">251.000000</td>
-<td id="T_151a2_row3_col28" class="data row3 col28">321.000000</td>
-<td id="T_151a2_row3_col29" class="data row3 col29">192.000000</td>
-<td id="T_151a2_row3_col30" class="data row3 col30">478.000000</td>
-<td id="T_151a2_row3_col31" class="data row3 col31">245.000000</td>
-<td id="T_151a2_row3_col32" class="data row3 col32">263.000000</td>
-<td id="T_151a2_row3_col33" class="data row3 col33">187.000000</td>
-<td id="T_151a2_row3_col34" class="data row3 col34">238.000000</td>
-<td id="T_151a2_row3_col35" class="data row3 col35">331.000000</td>
-<td id="T_151a2_row3_col36" class="data row3 col36">337.000000</td>
-<td id="T_151a2_row3_col37" class="data row3 col37">217.000000</td>
-<td id="T_151a2_row3_col38" class="data row3 col38">253.000000</td>
-<td id="T_151a2_row3_col39" class="data row3 col39">171.000000</td>
-<td id="T_151a2_row3_col40" class="data row3 col40">188.000000</td>
-<td id="T_151a2_row3_col41" class="data row3 col41">240.000000</td>
-<td id="T_151a2_row3_col42" class="data row3 col42">762.000000</td>
-<td id="T_151a2_row3_col43" class="data row3 col43">261.000000</td>
-<td id="T_151a2_row3_col44" class="data row3 col44">248.000000</td>
-<td id="T_151a2_row3_col45" class="data row3 col45">374.000000</td>
-<td id="T_151a2_row3_col46" class="data row3 col46">177.000000</td>
-<td id="T_151a2_row3_col47" class="data row3 col47">947.000000</td>
-<td id="T_151a2_row3_col48" class="data row3 col48">233.000000</td>
-<td id="T_151a2_row3_col49" class="data row3 col49">140.000000</td>
-</tr>
-<tr class="odd">
-<td id="T_151a2_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
-<td id="T_151a2_row4_col0" class="data row4 col0">305.000000</td>
-<td id="T_151a2_row4_col1" class="data row4 col1">301.000000</td>
-<td id="T_151a2_row4_col2" class="data row4 col2">197.000000</td>
-<td id="T_151a2_row4_col3" class="data row4 col3">361.000000</td>
-<td id="T_151a2_row4_col4" class="data row4 col4">267.000000</td>
-<td id="T_151a2_row4_col5" class="data row4 col5">428.000000</td>
-<td id="T_151a2_row4_col6" class="data row4 col6">304.000000</td>
-<td id="T_151a2_row4_col7" class="data row4 col7">434.000000</td>
-<td id="T_151a2_row4_col8" class="data row4 col8">623.000000</td>
-<td id="T_151a2_row4_col9" class="data row4 col9">235.000000</td>
-<td id="T_151a2_row4_col10" class="data row4 col10">344.000000</td>
-<td id="T_151a2_row4_col11" class="data row4 col11">804.000000</td>
-<td id="T_151a2_row4_col12" class="data row4 col12">392.000000</td>
-<td id="T_151a2_row4_col13" class="data row4 col13">532.000000</td>
-<td id="T_151a2_row4_col14" class="data row4 col14">272.000000</td>
-<td id="T_151a2_row4_col15" class="data row4 col15">285.000000</td>
-<td id="T_151a2_row4_col16" class="data row4 col16">262.000000</td>
-<td id="T_151a2_row4_col17" class="data row4 col17">199.000000</td>
-<td id="T_151a2_row4_col18" class="data row4 col18">231.000000</td>
-<td id="T_151a2_row4_col19" class="data row4 col19">227.000000</td>
-<td id="T_151a2_row4_col20" class="data row4 col20">978.000000</td>
-<td id="T_151a2_row4_col21" class="data row4 col21">366.000000</td>
-<td id="T_151a2_row4_col22" class="data row4 col22">427.000000</td>
-<td id="T_151a2_row4_col23" class="data row4 col23">650.000000</td>
-<td id="T_151a2_row4_col24" class="data row4 col24">164.000000</td>
-<td id="T_151a2_row4_col25" class="data row4 col25">670.000000</td>
-<td id="T_151a2_row4_col26" class="data row4 col26">197.000000</td>
-<td id="T_151a2_row4_col27" class="data row4 col27">316.000000</td>
-<td id="T_151a2_row4_col28" class="data row4 col28">382.000000</td>
-<td id="T_151a2_row4_col29" class="data row4 col29">277.000000</td>
-<td id="T_151a2_row4_col30" class="data row4 col30">495.000000</td>
-<td id="T_151a2_row4_col31" class="data row4 col31">313.000000</td>
-<td id="T_151a2_row4_col32" class="data row4 col32">318.000000</td>
-<td id="T_151a2_row4_col33" class="data row4 col33">202.000000</td>
-<td id="T_151a2_row4_col34" class="data row4 col34">287.000000</td>
-<td id="T_151a2_row4_col35" class="data row4 col35">448.000000</td>
-<td id="T_151a2_row4_col36" class="data row4 col36">401.000000</td>
-<td id="T_151a2_row4_col37" class="data row4 col37">260.000000</td>
-<td id="T_151a2_row4_col38" class="data row4 col38">306.000000</td>
-<td id="T_151a2_row4_col39" class="data row4 col39">238.000000</td>
-<td id="T_151a2_row4_col40" class="data row4 col40">222.000000</td>
-<td id="T_151a2_row4_col41" class="data row4 col41">274.000000</td>
-<td id="T_151a2_row4_col42" class="data row4 col42">892.000000</td>
-<td id="T_151a2_row4_col43" class="data row4 col43">374.000000</td>
-<td id="T_151a2_row4_col44" class="data row4 col44">326.000000</td>
-<td id="T_151a2_row4_col45" class="data row4 col45">490.000000</td>
-<td id="T_151a2_row4_col46" class="data row4 col46">212.000000</td>
-<td id="T_151a2_row4_col47" class="data row4 col47">1236.000000</td>
-<td id="T_151a2_row4_col48" class="data row4 col48">338.000000</td>
-<td id="T_151a2_row4_col49" class="data row4 col49">153.000000</td>
-</tr>
-</tbody>
+<table id="T_151a2">
+  <thead>
+    <tr>
+      <th class="index_name level0">cname</th>
+      <th id="T_151a2_level0_col0" class="col_heading level0 col0">Algeria</th>
+      <th id="T_151a2_level0_col1" class="col_heading level0 col1">Argentina</th>
+      <th id="T_151a2_level0_col2" class="col_heading level0 col2">Australia</th>
+      <th id="T_151a2_level0_col3" class="col_heading level0 col3">Austria</th>
+      <th id="T_151a2_level0_col4" class="col_heading level0 col4">Belgium</th>
+      <th id="T_151a2_level0_col5" class="col_heading level0 col5">Brazil</th>
+      <th id="T_151a2_level0_col6" class="col_heading level0 col6">Canada</th>
+      <th id="T_151a2_level0_col7" class="col_heading level0 col7">Chile</th>
+      <th id="T_151a2_level0_col8" class="col_heading level0 col8">China</th>
+      <th id="T_151a2_level0_col9" class="col_heading level0 col9">Colombia</th>
+      <th id="T_151a2_level0_col10" class="col_heading level0 col10">Czech Republic</th>
+      <th id="T_151a2_level0_col11" class="col_heading level0 col11">Denmark</th>
+      <th id="T_151a2_level0_col12" class="col_heading level0 col12">Dominican Republic</th>
+      <th id="T_151a2_level0_col13" class="col_heading level0 col13">Ecuador</th>
+      <th id="T_151a2_level0_col14" class="col_heading level0 col14">Finland</th>
+      <th id="T_151a2_level0_col15" class="col_heading level0 col15">France</th>
+      <th id="T_151a2_level0_col16" class="col_heading level0 col16">Germany</th>
+      <th id="T_151a2_level0_col17" class="col_heading level0 col17">Iceland</th>
+      <th id="T_151a2_level0_col18" class="col_heading level0 col18">India</th>
+      <th id="T_151a2_level0_col19" class="col_heading level0 col19">Indonesia</th>
+      <th id="T_151a2_level0_col20" class="col_heading level0 col20">Iran</th>
+      <th id="T_151a2_level0_col21" class="col_heading level0 col21">Ireland</th>
+      <th id="T_151a2_level0_col22" class="col_heading level0 col22">Israel</th>
+      <th id="T_151a2_level0_col23" class="col_heading level0 col23">Italy</th>
+      <th id="T_151a2_level0_col24" class="col_heading level0 col24">Japan</th>
+      <th id="T_151a2_level0_col25" class="col_heading level0 col25">Luxembourg</th>
+      <th id="T_151a2_level0_col26" class="col_heading level0 col26">Malaysia</th>
+      <th id="T_151a2_level0_col27" class="col_heading level0 col27">Mexico</th>
+      <th id="T_151a2_level0_col28" class="col_heading level0 col28">Netherlands</th>
+      <th id="T_151a2_level0_col29" class="col_heading level0 col29">Norway</th>
+      <th id="T_151a2_level0_col30" class="col_heading level0 col30">Pakistan</th>
+      <th id="T_151a2_level0_col31" class="col_heading level0 col31">Panama</th>
+      <th id="T_151a2_level0_col32" class="col_heading level0 col32">Peru</th>
+      <th id="T_151a2_level0_col33" class="col_heading level0 col33">Philippines</th>
+      <th id="T_151a2_level0_col34" class="col_heading level0 col34">Poland</th>
+      <th id="T_151a2_level0_col35" class="col_heading level0 col35">Portugal</th>
+      <th id="T_151a2_level0_col36" class="col_heading level0 col36">Qatar</th>
+      <th id="T_151a2_level0_col37" class="col_heading level0 col37">Romania</th>
+      <th id="T_151a2_level0_col38" class="col_heading level0 col38">Russian Federation</th>
+      <th id="T_151a2_level0_col39" class="col_heading level0 col39">Saudi Arabia</th>
+      <th id="T_151a2_level0_col40" class="col_heading level0 col40">Serbia</th>
+      <th id="T_151a2_level0_col41" class="col_heading level0 col41">South Africa</th>
+      <th id="T_151a2_level0_col42" class="col_heading level0 col42">South Korea</th>
+      <th id="T_151a2_level0_col43" class="col_heading level0 col43">Spain</th>
+      <th id="T_151a2_level0_col44" class="col_heading level0 col44">Sweden</th>
+      <th id="T_151a2_level0_col45" class="col_heading level0 col45">Switzerland</th>
+      <th id="T_151a2_level0_col46" class="col_heading level0 col46">Thailand</th>
+      <th id="T_151a2_level0_col47" class="col_heading level0 col47">Turkey</th>
+      <th id="T_151a2_level0_col48" class="col_heading level0 col48">USA</th>
+      <th id="T_151a2_level0_col49" class="col_heading level0 col49">United Arab Emirates</th>
+    </tr>
+    <tr>
+      <th class="index_name level0">days_elapsed</th>
+      <th class="blank col0">&nbsp;</th>
+      <th class="blank col1">&nbsp;</th>
+      <th class="blank col2">&nbsp;</th>
+      <th class="blank col3">&nbsp;</th>
+      <th class="blank col4">&nbsp;</th>
+      <th class="blank col5">&nbsp;</th>
+      <th class="blank col6">&nbsp;</th>
+      <th class="blank col7">&nbsp;</th>
+      <th class="blank col8">&nbsp;</th>
+      <th class="blank col9">&nbsp;</th>
+      <th class="blank col10">&nbsp;</th>
+      <th class="blank col11">&nbsp;</th>
+      <th class="blank col12">&nbsp;</th>
+      <th class="blank col13">&nbsp;</th>
+      <th class="blank col14">&nbsp;</th>
+      <th class="blank col15">&nbsp;</th>
+      <th class="blank col16">&nbsp;</th>
+      <th class="blank col17">&nbsp;</th>
+      <th class="blank col18">&nbsp;</th>
+      <th class="blank col19">&nbsp;</th>
+      <th class="blank col20">&nbsp;</th>
+      <th class="blank col21">&nbsp;</th>
+      <th class="blank col22">&nbsp;</th>
+      <th class="blank col23">&nbsp;</th>
+      <th class="blank col24">&nbsp;</th>
+      <th class="blank col25">&nbsp;</th>
+      <th class="blank col26">&nbsp;</th>
+      <th class="blank col27">&nbsp;</th>
+      <th class="blank col28">&nbsp;</th>
+      <th class="blank col29">&nbsp;</th>
+      <th class="blank col30">&nbsp;</th>
+      <th class="blank col31">&nbsp;</th>
+      <th class="blank col32">&nbsp;</th>
+      <th class="blank col33">&nbsp;</th>
+      <th class="blank col34">&nbsp;</th>
+      <th class="blank col35">&nbsp;</th>
+      <th class="blank col36">&nbsp;</th>
+      <th class="blank col37">&nbsp;</th>
+      <th class="blank col38">&nbsp;</th>
+      <th class="blank col39">&nbsp;</th>
+      <th class="blank col40">&nbsp;</th>
+      <th class="blank col41">&nbsp;</th>
+      <th class="blank col42">&nbsp;</th>
+      <th class="blank col43">&nbsp;</th>
+      <th class="blank col44">&nbsp;</th>
+      <th class="blank col45">&nbsp;</th>
+      <th class="blank col46">&nbsp;</th>
+      <th class="blank col47">&nbsp;</th>
+      <th class="blank col48">&nbsp;</th>
+      <th class="blank col49">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_151a2_level0_row0" class="row_heading level0 row0">0</th>
+      <td id="T_151a2_row0_col0" class="data row0 col0">102.000000</td>
+      <td id="T_151a2_row0_col1" class="data row0 col1">128.000000</td>
+      <td id="T_151a2_row0_col2" class="data row0 col2">100.000000</td>
+      <td id="T_151a2_row0_col3" class="data row0 col3">102.000000</td>
+      <td id="T_151a2_row0_col4" class="data row0 col4">109.000000</td>
+      <td id="T_151a2_row0_col5" class="data row0 col5">121.000000</td>
+      <td id="T_151a2_row0_col6" class="data row0 col6">103.000000</td>
+      <td id="T_151a2_row0_col7" class="data row0 col7">156.000000</td>
+      <td id="T_151a2_row0_col8" class="data row0 col8">216.000000</td>
+      <td id="T_151a2_row0_col9" class="data row0 col9">102.000000</td>
+      <td id="T_151a2_row0_col10" class="data row0 col10">116.000000</td>
+      <td id="T_151a2_row0_col11" class="data row0 col11">113.000000</td>
+      <td id="T_151a2_row0_col12" class="data row0 col12">112.000000</td>
+      <td id="T_151a2_row0_col13" class="data row0 col13">111.000000</td>
+      <td id="T_151a2_row0_col14" class="data row0 col14">155.000000</td>
+      <td id="T_151a2_row0_col15" class="data row0 col15">100.000000</td>
+      <td id="T_151a2_row0_col16" class="data row0 col16">111.000000</td>
+      <td id="T_151a2_row0_col17" class="data row0 col17">117.000000</td>
+      <td id="T_151a2_row0_col18" class="data row0 col18">125.000000</td>
+      <td id="T_151a2_row0_col19" class="data row0 col19">117.000000</td>
+      <td id="T_151a2_row0_col20" class="data row0 col20">139.000000</td>
+      <td id="T_151a2_row0_col21" class="data row0 col21">129.000000</td>
+      <td id="T_151a2_row0_col22" class="data row0 col22">116.000000</td>
+      <td id="T_151a2_row0_col23" class="data row0 col23">132.000000</td>
+      <td id="T_151a2_row0_col24" class="data row0 col24">105.000000</td>
+      <td id="T_151a2_row0_col25" class="data row0 col25">140.000000</td>
+      <td id="T_151a2_row0_col26" class="data row0 col26">117.000000</td>
+      <td id="T_151a2_row0_col27" class="data row0 col27">118.000000</td>
+      <td id="T_151a2_row0_col28" class="data row0 col28">128.000000</td>
+      <td id="T_151a2_row0_col29" class="data row0 col29">113.000000</td>
+      <td id="T_151a2_row0_col30" class="data row0 col30">187.000000</td>
+      <td id="T_151a2_row0_col31" class="data row0 col31">109.000000</td>
+      <td id="T_151a2_row0_col32" class="data row0 col32">117.000000</td>
+      <td id="T_151a2_row0_col33" class="data row0 col33">111.000000</td>
+      <td id="T_151a2_row0_col34" class="data row0 col34">104.000000</td>
+      <td id="T_151a2_row0_col35" class="data row0 col35">112.000000</td>
+      <td id="T_151a2_row0_col36" class="data row0 col36">262.000000</td>
+      <td id="T_151a2_row0_col37" class="data row0 col37">113.000000</td>
+      <td id="T_151a2_row0_col38" class="data row0 col38">114.000000</td>
+      <td id="T_151a2_row0_col39" class="data row0 col39">118.000000</td>
+      <td id="T_151a2_row0_col40" class="data row0 col40">126.000000</td>
+      <td id="T_151a2_row0_col41" class="data row0 col41">116.000000</td>
+      <td id="T_151a2_row0_col42" class="data row0 col42">155.000000</td>
+      <td id="T_151a2_row0_col43" class="data row0 col43">114.000000</td>
+      <td id="T_151a2_row0_col44" class="data row0 col44">137.000000</td>
+      <td id="T_151a2_row0_col45" class="data row0 col45">209.000000</td>
+      <td id="T_151a2_row0_col46" class="data row0 col46">114.000000</td>
+      <td id="T_151a2_row0_col47" class="data row0 col47">191.000000</td>
+      <td id="T_151a2_row0_col48" class="data row0 col48">103.000000</td>
+      <td id="T_151a2_row0_col49" class="data row0 col49">113.000000</td>
+    </tr>
+    <tr>
+      <th id="T_151a2_level0_row1" class="row_heading level0 row1">1</th>
+      <td id="T_151a2_row1_col0" class="data row1 col0">189.000000</td>
+      <td id="T_151a2_row1_col1" class="data row1 col1">158.000000</td>
+      <td id="T_151a2_row1_col2" class="data row1 col2">112.000000</td>
+      <td id="T_151a2_row1_col3" class="data row1 col3">131.000000</td>
+      <td id="T_151a2_row1_col4" class="data row1 col4">169.000000</td>
+      <td id="T_151a2_row1_col5" class="data row1 col5">200.000000</td>
+      <td id="T_151a2_row1_col6" class="data row1 col6">138.000000</td>
+      <td id="T_151a2_row1_col7" class="data row1 col7">201.000000</td>
+      <td id="T_151a2_row1_col8" class="data row1 col8">235.000000</td>
+      <td id="T_151a2_row1_col9" class="data row1 col9">128.000000</td>
+      <td id="T_151a2_row1_col10" class="data row1 col10">150.000000</td>
+      <td id="T_151a2_row1_col11" class="data row1 col11">264.000000</td>
+      <td id="T_151a2_row1_col12" class="data row1 col12">202.000000</td>
+      <td id="T_151a2_row1_col13" class="data row1 col13">168.000000</td>
+      <td id="T_151a2_row1_col14" class="data row1 col14">nan</td>
+      <td id="T_151a2_row1_col15" class="data row1 col15">130.000000</td>
+      <td id="T_151a2_row1_col16" class="data row1 col16">129.000000</td>
+      <td id="T_151a2_row1_col17" class="data row1 col17">117.000000</td>
+      <td id="T_151a2_row1_col18" class="data row1 col18">137.000000</td>
+      <td id="T_151a2_row1_col19" class="data row1 col19">134.000000</td>
+      <td id="T_151a2_row1_col20" class="data row1 col20">245.000000</td>
+      <td id="T_151a2_row1_col21" class="data row1 col21">169.000000</td>
+      <td id="T_151a2_row1_col22" class="data row1 col22">178.000000</td>
+      <td id="T_151a2_row1_col23" class="data row1 col23">229.000000</td>
+      <td id="T_151a2_row1_col24" class="data row1 col24">132.000000</td>
+      <td id="T_151a2_row1_col25" class="data row1 col25">210.000000</td>
+      <td id="T_151a2_row1_col26" class="data row1 col26">129.000000</td>
+      <td id="T_151a2_row1_col27" class="data row1 col27">164.000000</td>
+      <td id="T_151a2_row1_col28" class="data row1 col28">188.000000</td>
+      <td id="T_151a2_row1_col29" class="data row1 col29">147.000000</td>
+      <td id="T_151a2_row1_col30" class="data row1 col30">187.000000</td>
+      <td id="T_151a2_row1_col31" class="data row1 col31">137.000000</td>
+      <td id="T_151a2_row1_col32" class="data row1 col32">145.000000</td>
+      <td id="T_151a2_row1_col33" class="data row1 col33">140.000000</td>
+      <td id="T_151a2_row1_col34" class="data row1 col34">125.000000</td>
+      <td id="T_151a2_row1_col35" class="data row1 col35">169.000000</td>
+      <td id="T_151a2_row1_col36" class="data row1 col36">nan</td>
+      <td id="T_151a2_row1_col37" class="data row1 col37">139.000000</td>
+      <td id="T_151a2_row1_col38" class="data row1 col38">147.000000</td>
+      <td id="T_151a2_row1_col39" class="data row1 col39">133.000000</td>
+      <td id="T_151a2_row1_col40" class="data row1 col40">135.000000</td>
+      <td id="T_151a2_row1_col41" class="data row1 col41">150.000000</td>
+      <td id="T_151a2_row1_col42" class="data row1 col42">345.000000</td>
+      <td id="T_151a2_row1_col43" class="data row1 col43">151.000000</td>
+      <td id="T_151a2_row1_col44" class="data row1 col44">161.000000</td>
+      <td id="T_151a2_row1_col45" class="data row1 col45">264.000000</td>
+      <td id="T_151a2_row1_col46" class="data row1 col46">177.000000</td>
+      <td id="T_151a2_row1_col47" class="data row1 col47">359.000000</td>
+      <td id="T_151a2_row1_col48" class="data row1 col48">125.000000</td>
+      <td id="T_151a2_row1_col49" class="data row1 col49">113.000000</td>
+    </tr>
+    <tr>
+      <th id="T_151a2_level0_row2" class="row_heading level0 row2">2</th>
+      <td id="T_151a2_row2_col0" class="data row2 col0">231.000000</td>
+      <td id="T_151a2_row2_col1" class="data row2 col1">225.000000</td>
+      <td id="T_151a2_row2_col2" class="data row2 col2">126.000000</td>
+      <td id="T_151a2_row2_col3" class="data row2 col3">182.000000</td>
+      <td id="T_151a2_row2_col4" class="data row2 col4">200.000000</td>
+      <td id="T_151a2_row2_col5" class="data row2 col5">234.000000</td>
+      <td id="T_151a2_row2_col6" class="data row2 col6">176.000000</td>
+      <td id="T_151a2_row2_col7" class="data row2 col7">238.000000</td>
+      <td id="T_151a2_row2_col8" class="data row2 col8">386.000000</td>
+      <td id="T_151a2_row2_col9" class="data row2 col9">158.000000</td>
+      <td id="T_151a2_row2_col10" class="data row2 col10">214.000000</td>
+      <td id="T_151a2_row2_col11" class="data row2 col11">516.000000</td>
+      <td id="T_151a2_row2_col12" class="data row2 col12">245.000000</td>
+      <td id="T_151a2_row2_col13" class="data row2 col13">199.000000</td>
+      <td id="T_151a2_row2_col14" class="data row2 col14">210.000000</td>
+      <td id="T_151a2_row2_col15" class="data row2 col15">178.000000</td>
+      <td id="T_151a2_row2_col16" class="data row2 col16">157.000000</td>
+      <td id="T_151a2_row2_col17" class="data row2 col17">138.000000</td>
+      <td id="T_151a2_row2_col18" class="data row2 col18">165.000000</td>
+      <td id="T_151a2_row2_col19" class="data row2 col19">172.000000</td>
+      <td id="T_151a2_row2_col20" class="data row2 col20">388.000000</td>
+      <td id="T_151a2_row2_col21" class="data row2 col21">223.000000</td>
+      <td id="T_151a2_row2_col22" class="data row2 col22">250.000000</td>
+      <td id="T_151a2_row2_col23" class="data row2 col23">322.000000</td>
+      <td id="T_151a2_row2_col24" class="data row2 col24">144.000000</td>
+      <td id="T_151a2_row2_col25" class="data row2 col25">345.000000</td>
+      <td id="T_151a2_row2_col26" class="data row2 col26">149.000000</td>
+      <td id="T_151a2_row2_col27" class="data row2 col27">203.000000</td>
+      <td id="T_151a2_row2_col28" class="data row2 col28">265.000000</td>
+      <td id="T_151a2_row2_col29" class="data row2 col29">169.000000</td>
+      <td id="T_151a2_row2_col30" class="data row2 col30">302.000000</td>
+      <td id="T_151a2_row2_col31" class="data row2 col31">200.000000</td>
+      <td id="T_151a2_row2_col32" class="data row2 col32">234.000000</td>
+      <td id="T_151a2_row2_col33" class="data row2 col33">142.000000</td>
+      <td id="T_151a2_row2_col34" class="data row2 col34">177.000000</td>
+      <td id="T_151a2_row2_col35" class="data row2 col35">245.000000</td>
+      <td id="T_151a2_row2_col36" class="data row2 col36">320.000000</td>
+      <td id="T_151a2_row2_col37" class="data row2 col37">184.000000</td>
+      <td id="T_151a2_row2_col38" class="data row2 col38">199.000000</td>
+      <td id="T_151a2_row2_col39" class="data row2 col39">133.000000</td>
+      <td id="T_151a2_row2_col40" class="data row2 col40">149.000000</td>
+      <td id="T_151a2_row2_col41" class="data row2 col41">205.000000</td>
+      <td id="T_151a2_row2_col42" class="data row2 col42">601.000000</td>
+      <td id="T_151a2_row2_col43" class="data row2 col43">200.000000</td>
+      <td id="T_151a2_row2_col44" class="data row2 col44">203.000000</td>
+      <td id="T_151a2_row2_col45" class="data row2 col45">332.000000</td>
+      <td id="T_151a2_row2_col46" class="data row2 col46">177.000000</td>
+      <td id="T_151a2_row2_col47" class="data row2 col47">670.000000</td>
+      <td id="T_151a2_row2_col48" class="data row2 col48">159.000000</td>
+      <td id="T_151a2_row2_col49" class="data row2 col49">140.000000</td>
+    </tr>
+    <tr>
+      <th id="T_151a2_level0_row3" class="row_heading level0 row3">3</th>
+      <td id="T_151a2_row3_col0" class="data row3 col0">264.000000</td>
+      <td id="T_151a2_row3_col1" class="data row3 col1">266.000000</td>
+      <td id="T_151a2_row3_col2" class="data row3 col2">156.000000</td>
+      <td id="T_151a2_row3_col3" class="data row3 col3">246.000000</td>
+      <td id="T_151a2_row3_col4" class="data row3 col4">239.000000</td>
+      <td id="T_151a2_row3_col5" class="data row3 col5">291.000000</td>
+      <td id="T_151a2_row3_col6" class="data row3 col6">244.000000</td>
+      <td id="T_151a2_row3_col7" class="data row3 col7">342.000000</td>
+      <td id="T_151a2_row3_col8" class="data row3 col8">526.000000</td>
+      <td id="T_151a2_row3_col9" class="data row3 col9">210.000000</td>
+      <td id="T_151a2_row3_col10" class="data row3 col10">298.000000</td>
+      <td id="T_151a2_row3_col11" class="data row3 col11">676.000000</td>
+      <td id="T_151a2_row3_col12" class="data row3 col12">312.000000</td>
+      <td id="T_151a2_row3_col13" class="data row3 col13">426.000000</td>
+      <td id="T_151a2_row3_col14" class="data row3 col14">267.000000</td>
+      <td id="T_151a2_row3_col15" class="data row3 col15">212.000000</td>
+      <td id="T_151a2_row3_col16" class="data row3 col16">196.000000</td>
+      <td id="T_151a2_row3_col17" class="data row3 col17">178.000000</td>
+      <td id="T_151a2_row3_col18" class="data row3 col18">191.000000</td>
+      <td id="T_151a2_row3_col19" class="data row3 col19">172.000000</td>
+      <td id="T_151a2_row3_col20" class="data row3 col20">593.000000</td>
+      <td id="T_151a2_row3_col21" class="data row3 col21">292.000000</td>
+      <td id="T_151a2_row3_col22" class="data row3 col22">260.000000</td>
+      <td id="T_151a2_row3_col23" class="data row3 col23">400.000000</td>
+      <td id="T_151a2_row3_col24" class="data row3 col24">144.000000</td>
+      <td id="T_151a2_row3_col25" class="data row3 col25">484.000000</td>
+      <td id="T_151a2_row3_col26" class="data row3 col26">158.000000</td>
+      <td id="T_151a2_row3_col27" class="data row3 col27">251.000000</td>
+      <td id="T_151a2_row3_col28" class="data row3 col28">321.000000</td>
+      <td id="T_151a2_row3_col29" class="data row3 col29">192.000000</td>
+      <td id="T_151a2_row3_col30" class="data row3 col30">478.000000</td>
+      <td id="T_151a2_row3_col31" class="data row3 col31">245.000000</td>
+      <td id="T_151a2_row3_col32" class="data row3 col32">263.000000</td>
+      <td id="T_151a2_row3_col33" class="data row3 col33">187.000000</td>
+      <td id="T_151a2_row3_col34" class="data row3 col34">238.000000</td>
+      <td id="T_151a2_row3_col35" class="data row3 col35">331.000000</td>
+      <td id="T_151a2_row3_col36" class="data row3 col36">337.000000</td>
+      <td id="T_151a2_row3_col37" class="data row3 col37">217.000000</td>
+      <td id="T_151a2_row3_col38" class="data row3 col38">253.000000</td>
+      <td id="T_151a2_row3_col39" class="data row3 col39">171.000000</td>
+      <td id="T_151a2_row3_col40" class="data row3 col40">188.000000</td>
+      <td id="T_151a2_row3_col41" class="data row3 col41">240.000000</td>
+      <td id="T_151a2_row3_col42" class="data row3 col42">762.000000</td>
+      <td id="T_151a2_row3_col43" class="data row3 col43">261.000000</td>
+      <td id="T_151a2_row3_col44" class="data row3 col44">248.000000</td>
+      <td id="T_151a2_row3_col45" class="data row3 col45">374.000000</td>
+      <td id="T_151a2_row3_col46" class="data row3 col46">177.000000</td>
+      <td id="T_151a2_row3_col47" class="data row3 col47">947.000000</td>
+      <td id="T_151a2_row3_col48" class="data row3 col48">233.000000</td>
+      <td id="T_151a2_row3_col49" class="data row3 col49">140.000000</td>
+    </tr>
+    <tr>
+      <th id="T_151a2_level0_row4" class="row_heading level0 row4">4</th>
+      <td id="T_151a2_row4_col0" class="data row4 col0">305.000000</td>
+      <td id="T_151a2_row4_col1" class="data row4 col1">301.000000</td>
+      <td id="T_151a2_row4_col2" class="data row4 col2">197.000000</td>
+      <td id="T_151a2_row4_col3" class="data row4 col3">361.000000</td>
+      <td id="T_151a2_row4_col4" class="data row4 col4">267.000000</td>
+      <td id="T_151a2_row4_col5" class="data row4 col5">428.000000</td>
+      <td id="T_151a2_row4_col6" class="data row4 col6">304.000000</td>
+      <td id="T_151a2_row4_col7" class="data row4 col7">434.000000</td>
+      <td id="T_151a2_row4_col8" class="data row4 col8">623.000000</td>
+      <td id="T_151a2_row4_col9" class="data row4 col9">235.000000</td>
+      <td id="T_151a2_row4_col10" class="data row4 col10">344.000000</td>
+      <td id="T_151a2_row4_col11" class="data row4 col11">804.000000</td>
+      <td id="T_151a2_row4_col12" class="data row4 col12">392.000000</td>
+      <td id="T_151a2_row4_col13" class="data row4 col13">532.000000</td>
+      <td id="T_151a2_row4_col14" class="data row4 col14">272.000000</td>
+      <td id="T_151a2_row4_col15" class="data row4 col15">285.000000</td>
+      <td id="T_151a2_row4_col16" class="data row4 col16">262.000000</td>
+      <td id="T_151a2_row4_col17" class="data row4 col17">199.000000</td>
+      <td id="T_151a2_row4_col18" class="data row4 col18">231.000000</td>
+      <td id="T_151a2_row4_col19" class="data row4 col19">227.000000</td>
+      <td id="T_151a2_row4_col20" class="data row4 col20">978.000000</td>
+      <td id="T_151a2_row4_col21" class="data row4 col21">366.000000</td>
+      <td id="T_151a2_row4_col22" class="data row4 col22">427.000000</td>
+      <td id="T_151a2_row4_col23" class="data row4 col23">650.000000</td>
+      <td id="T_151a2_row4_col24" class="data row4 col24">164.000000</td>
+      <td id="T_151a2_row4_col25" class="data row4 col25">670.000000</td>
+      <td id="T_151a2_row4_col26" class="data row4 col26">197.000000</td>
+      <td id="T_151a2_row4_col27" class="data row4 col27">316.000000</td>
+      <td id="T_151a2_row4_col28" class="data row4 col28">382.000000</td>
+      <td id="T_151a2_row4_col29" class="data row4 col29">277.000000</td>
+      <td id="T_151a2_row4_col30" class="data row4 col30">495.000000</td>
+      <td id="T_151a2_row4_col31" class="data row4 col31">313.000000</td>
+      <td id="T_151a2_row4_col32" class="data row4 col32">318.000000</td>
+      <td id="T_151a2_row4_col33" class="data row4 col33">202.000000</td>
+      <td id="T_151a2_row4_col34" class="data row4 col34">287.000000</td>
+      <td id="T_151a2_row4_col35" class="data row4 col35">448.000000</td>
+      <td id="T_151a2_row4_col36" class="data row4 col36">401.000000</td>
+      <td id="T_151a2_row4_col37" class="data row4 col37">260.000000</td>
+      <td id="T_151a2_row4_col38" class="data row4 col38">306.000000</td>
+      <td id="T_151a2_row4_col39" class="data row4 col39">238.000000</td>
+      <td id="T_151a2_row4_col40" class="data row4 col40">222.000000</td>
+      <td id="T_151a2_row4_col41" class="data row4 col41">274.000000</td>
+      <td id="T_151a2_row4_col42" class="data row4 col42">892.000000</td>
+      <td id="T_151a2_row4_col43" class="data row4 col43">374.000000</td>
+      <td id="T_151a2_row4_col44" class="data row4 col44">326.000000</td>
+      <td id="T_151a2_row4_col45" class="data row4 col45">490.000000</td>
+      <td id="T_151a2_row4_col46" class="data row4 col46">212.000000</td>
+      <td id="T_151a2_row4_col47" class="data row4 col47">1236.000000</td>
+      <td id="T_151a2_row4_col48" class="data row4 col48">338.000000</td>
+      <td id="T_151a2_row4_col49" class="data row4 col49">153.000000</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 </div>
@@ -926,50 +953,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>markers.head().style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+
 <style type="text/css">
 </style>
-
-<table id="T_e5232" data-quarto-postprocess="true" class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_e5232_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">days_elapsed</th>
-<th id="T_e5232_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">cname</th>
-<th id="T_e5232_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">cu_cases</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_e5232_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
-<td id="T_e5232_row0_col0" class="data row0 col0">34</td>
-<td id="T_e5232_row0_col1" class="data row0 col1">USA</td>
-<td id="T_e5232_row0_col2" class="data row0 col2">337635</td>
-</tr>
-<tr class="even">
-<td id="T_e5232_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
-<td id="T_e5232_row1_col0" class="data row1 col0">34</td>
-<td id="T_e5232_row1_col1" class="data row1 col1">Spain</td>
-<td id="T_e5232_row1_col2" class="data row1 col2">130759</td>
-</tr>
-<tr class="odd">
-<td id="T_e5232_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
-<td id="T_e5232_row2_col0" class="data row2 col0">42</td>
-<td id="T_e5232_row2_col1" class="data row2 col1">Italy</td>
-<td id="T_e5232_row2_col2" class="data row2 col2">128948</td>
-</tr>
-<tr class="even">
-<td id="T_e5232_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
-<td id="T_e5232_row3_col0" class="data row3 col0">36</td>
-<td id="T_e5232_row3_col1" class="data row3 col1">Germany</td>
-<td id="T_e5232_row3_col2" class="data row3 col2">95391</td>
-</tr>
-<tr class="odd">
-<td id="T_e5232_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
-<td id="T_e5232_row4_col0" class="data row4 col0">78</td>
-<td id="T_e5232_row4_col1" class="data row4 col1">China</td>
-<td id="T_e5232_row4_col2" class="data row4 col2">82642</td>
-</tr>
-</tbody>
+<table id="T_e5232">
+  <thead>
+    <tr>
+      <th class="blank level0">&nbsp;</th>
+      <th id="T_e5232_level0_col0" class="col_heading level0 col0">days_elapsed</th>
+      <th id="T_e5232_level0_col1" class="col_heading level0 col1">cname</th>
+      <th id="T_e5232_level0_col2" class="col_heading level0 col2">cu_cases</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_e5232_level0_row0" class="row_heading level0 row0">0</th>
+      <td id="T_e5232_row0_col0" class="data row0 col0">34</td>
+      <td id="T_e5232_row0_col1" class="data row0 col1">USA</td>
+      <td id="T_e5232_row0_col2" class="data row0 col2">337635</td>
+    </tr>
+    <tr>
+      <th id="T_e5232_level0_row1" class="row_heading level0 row1">1</th>
+      <td id="T_e5232_row1_col0" class="data row1 col0">34</td>
+      <td id="T_e5232_row1_col1" class="data row1 col1">Spain</td>
+      <td id="T_e5232_row1_col2" class="data row1 col2">130759</td>
+    </tr>
+    <tr>
+      <th id="T_e5232_level0_row2" class="row_heading level0 row2">2</th>
+      <td id="T_e5232_row2_col0" class="data row2 col0">42</td>
+      <td id="T_e5232_row2_col1" class="data row2 col1">Italy</td>
+      <td id="T_e5232_row2_col2" class="data row2 col2">128948</td>
+    </tr>
+    <tr>
+      <th id="T_e5232_level0_row3" class="row_heading level0 row3">3</th>
+      <td id="T_e5232_row3_col0" class="data row3 col0">36</td>
+      <td id="T_e5232_row3_col1" class="data row3 col1">Germany</td>
+      <td id="T_e5232_row3_col2" class="data row3 col2">95391</td>
+    </tr>
+    <tr>
+      <th id="T_e5232_level0_row4" class="row_heading level0 row4">4</th>
+      <td id="T_e5232_row4_col0" class="data row4 col0">78</td>
+      <td id="T_e5232_row4_col1" class="data row4 col1">China</td>
+      <td id="T_e5232_row4_col2" class="data row4 col2">82642</td>
+    </tr>
+  </tbody>
 </table>
 </div>
 </div>
@@ -1055,23 +1082,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -1136,92 +1149,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
