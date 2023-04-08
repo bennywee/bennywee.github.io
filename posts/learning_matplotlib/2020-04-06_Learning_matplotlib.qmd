@@ -3,8 +3,8 @@ title: 'Learning Matplotlib - Lessons from a ggplot user'
 author: "Benjamin Wee"
 date: "2020/04/06"
 categories:
-  - python
-  - matplotlib
+  - Python
+  - Matplotlib
 ---
 
 # You never forget your first
