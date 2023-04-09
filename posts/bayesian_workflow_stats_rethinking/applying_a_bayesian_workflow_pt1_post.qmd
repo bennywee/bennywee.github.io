@@ -159,10 +159,10 @@ I will use no pooling OLS to demonstrate the rest of the workflow. There is defi
 The no pooling regression is written out below, where $i$ indexes the property and $j$ indexes each neighbourhood. I've assigned a gaussian likelihood which assumes that the residuals are normally distributed. 
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &\sim Normal(\mu_i, \sigma) \\
 \mu_i &= \alpha_{j} + \beta * x_i \\
-\end{aligned}
+\end{align}
 $$
 Where $y_i$ is `log(SalesPrice)` and $x_i$ is `log(LotArea)` scaled to mean 0 and standard deviation 1. $\alpha_j$ is an intercept parameter for the jth neighbourhood in the sample. The slope coefficient can be interpreted as: a one standard deviation increase in `log(LotArea)` is a $\beta$ standard deviation change in `log(SalesPrice)`. 
 
@@ -185,10 +185,10 @@ df['log_sales_price_z'] = z_std(df['log_sales_price'])
 ```
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &= \frac{log(SalesPrice)_i - \overline{log(SalesPrice)}}{\sigma_{log(SalesPrice)}} \\
 x_i &= \frac{log(LotArea)_i - \overline{log(LotArea)}}{\sigma_{log(LotArea)}}
-\end{aligned}
+\end{align}
 $$
 
 Standardising both outcome and predictor variables makes sampling from the posterior distribution easier when we fit the model. If we had more continuous regressors, we could also compare the parameters on the same scale. Standardising also plays an important role in setting priors as we'll see below.
@@ -208,13 +208,13 @@ The variance parameter $\sigma$ is defined over positive real numbers. So our pr
 These weakly informative priors express my belief that the parameters of this model would overfit the sample and that we need to regularise their effects. Standardising the variables made this job much easier and intuitive. All together the full model looks like:
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &\sim Normal(\mu_i, \sigma) \\
 \mu_i &= \alpha_{j} + \beta * x_i \\
 \alpha_j &\sim Normal(0, 1)\\
 \beta &\sim Normal(0, 1) \\
 \sigma &\sim exp(1)
-\end{aligned}
+\end{align}
 $$
 
 ### 3)  Prior predictive checks - simulate data from the implied generative model
@@ -680,10 +680,10 @@ I will use no pooling OLS to demonstrate the rest of the workflow. There is defi
 The no pooling regression is written out below, where $i$ indexes the property and $j$ indexes each neighbourhood. I've assigned a gaussian likelihood which assumes that the residuals are normally distributed. 
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &\sim Normal(\mu_i, \sigma) \\
 \mu_i &= \alpha_{j} + \beta * x_i \\
-\end{aligned}
+\end{align}
 $$
 Where $y_i$ is `log(SalesPrice)` and $x_i$ is `log(LotArea)` scaled to mean 0 and standard deviation 1. $\alpha_j$ is an intercept parameter for the jth neighbourhood in the sample. The slope coefficient can be interpreted as: a one standard deviation increase in `log(LotArea)` is a $\beta$ standard deviation change in `log(SalesPrice)`. 
 
@@ -694,10 +694,10 @@ df  <-  df %>% mutate(log_lot_area_z = scale(log_lot_area),
 ```
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &= \frac{log(SalesPrice)_i - \overline{log(SalesPrice)}}{\sigma_{log(SalesPrice)}} \\
 x_i &= \frac{log(LotArea)_i - \overline{log(LotArea)}}{\sigma_{log(LotArea)}}
-\end{aligned}
+\end{align}
 $$
 Standardising both outcome and predictor variables makes sampling from the posterior distribution easier when we fit the model. If we had more continuous regressors, we could also compare the parameters on the same scale. Standardising also plays an important role in setting priors as we'll see below.
 
@@ -716,13 +716,13 @@ The variance parameter $\sigma$ is defined over positive real numbers. So our pr
 These weakly informative priors express my belief that the parameters of this model would overfit the sample and that we need to regularise their effects. Standardising the variables made this job much easier and intuitive. All together the full model looks like:
 
 $$
-\begin{aligned}
+\begin{align}
 y_i &\sim Normal(\mu_i, \sigma) \\
 \mu_i &= \alpha_{j} + \beta * x_i \\
 \alpha_j &\sim Normal(0, 1)\\
 \beta &\sim Normal(0, 1) \\
 \sigma &\sim exp(1)
-\end{aligned}
+\end{align}
 $$
 
 ### 3)  Prior predictive checks - simulate fake data from the implied generative model
