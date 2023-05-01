@@ -16,7 +16,7 @@ about:
 
 ---
 <div style="text-align: justify">
-Hi! My name is Ben and I’m a data scientist in Melbourne looking to pivot into software and data engineering. I am interested in (too) many things. I love learning about Bayesian statistics, econometrics and data storytelling through modelling and visualisations. I also love building things with code and working with others to solve problems. 
+Hi! My name is Ben and I’m a data scientist in Melbourne looking to pivot into software (ML/data) engineering. I am interested in (too) many things. I love learning about Bayesian statistics, econometrics and data storytelling through modelling and visualisations. I also love building things with code and working with others to solve problems. 
 
 I have spent the past 5 years working as a data scientist in industry. More recently I have found myself enjoying collaborating closely with data and machine learning engineers - learning about how to build and support production systems (machine learning models as well as data pipelines). I hope to continue doing this as I look to shift my career into the engineering space.
 
