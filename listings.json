@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/python_env_setup/python_env_setup.html",
       "/posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html",
       "/posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html"
     ]
