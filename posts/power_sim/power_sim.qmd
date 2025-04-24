@@ -159,12 +159,10 @@ head(df)
 
 ## Python
 ```{python}
-import random
-
 import numpy as np
 import pandas as pd
 
-random.seed(2025)
+np.random.seed(2025)
 
 # Control group bernoulli outcomes with probability pc
 yc = np.random.binomial(n=1, p=pc, size=nc)
@@ -367,7 +365,7 @@ left_right_side=side):
     return tuple([pvalue, test_result])
 
 # Random seed grid
-random.seed(2025)
+np.random.seed(2025)
 random_grid = list(np.random.randint(0,int(1e6), int(n_sim)))
 
 # Set up parallelism 
