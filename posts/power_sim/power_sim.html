@@ -397,28 +397,26 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2025</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">2025</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Control group bernoulli outcomes with probability pc</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>yc <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pc, size<span class="op">=</span>nc)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pt, size<span class="op">=</span>nt)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy variable 1= treatment, 0 = control.</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>xc <span class="op">=</span> np.repeat(<span class="dv">0</span>, nc)</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>xt <span class="op">=</span> np.repeat(<span class="dv">1</span>, nt)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Bring together in a data frame</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"y"</span>:np.concatenate([yc,yt]),</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"const"</span>: np.repeat(<span class="dv">1</span>, (nc<span class="op">+</span>nt)),</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"x"</span>:np.concatenate([xc,xt])})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Control group bernoulli outcomes with probability pc</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>yc <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pc, size<span class="op">=</span>nc)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pt, size<span class="op">=</span>nt)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Dummy variable 1= treatment, 0 = control.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>xc <span class="op">=</span> np.repeat(<span class="dv">0</span>, nc)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>xt <span class="op">=</span> np.repeat(<span class="dv">1</span>, nt)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Bring together in a data frame</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"y"</span>:np.concatenate([yc,yt]),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"const"</span>: np.repeat(<span class="dv">1</span>, (nc<span class="op">+</span>nt)),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"x"</span>:np.concatenate([xc,xt])})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -517,17 +515,17 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">Method:</td>
 <td>IRLS</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-36731.</td>
+<td>-36849.</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
 <td>Thu, 24 Apr 2025</td>
 <td data-quarto-table-cell-role="th">Deviance:</td>
-<td>73462.</td>
+<td>73697.</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>14:15:36</td>
+<td>14:31:59</td>
 <td data-quarto-table-cell-role="th">Pearson chi2:</td>
 <td>5.66e+04</td>
 </tr>
@@ -535,7 +533,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">No. Iterations:</td>
 <td>4</td>
 <td data-quarto-table-cell-role="th">Pseudo R-squ. (CS):</td>
-<td>0.0002309</td>
+<td>0.0001342</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Covariance Type:</td>
@@ -560,21 +558,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">const</td>
-<td>-0.6413</td>
-<td>0.013</td>
-<td>-51.297</td>
+<td>-0.6189</td>
+<td>0.012</td>
+<td>-49.672</td>
 <td>0.000</td>
-<td>-0.666</td>
-<td>-0.617</td>
+<td>-0.643</td>
+<td>-0.594</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>0.0636</td>
+<td>0.0484</td>
 <td>0.018</td>
-<td>3.616</td>
-<td>0.000</td>
-<td>0.029</td>
-<td>0.098</td>
+<td>2.757</td>
+<td>0.006</td>
+<td>0.014</td>
+<td>0.083</td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +580,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.0001497166036840973</code></pre>
+<pre><code>0.0029207985359095984</code></pre>
 </div>
 </div>
 </div>
@@ -724,7 +722,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">tuple</span>([pvalue, test_result])</span>
 <span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed grid</span></span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">2025</span>)</span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2025</span>)</span>
 <span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> <span class="bu">list</span>(np.random.randint(<span class="dv">0</span>,<span class="bu">int</span>(<span class="fl">1e6</span>), <span class="bu">int</span>(n_sim)))</span>
 <span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parallelism </span></span>
@@ -739,7 +737,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.mean(result_df[[<span class="st">"test_result"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.784</code></pre>
+<pre><code>0.81</code></pre>
 </div>
 </div>
 </div>
