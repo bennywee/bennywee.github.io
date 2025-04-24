@@ -517,17 +517,17 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">Method:</td>
 <td>IRLS</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-37013.</td>
+<td>-36731.</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
 <td>Thu, 24 Apr 2025</td>
 <td data-quarto-table-cell-role="th">Deviance:</td>
-<td>74026.</td>
+<td>73462.</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>14:00:50</td>
+<td>14:15:36</td>
 <td data-quarto-table-cell-role="th">Pearson chi2:</td>
 <td>5.66e+04</td>
 </tr>
@@ -535,7 +535,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">No. Iterations:</td>
 <td>4</td>
 <td data-quarto-table-cell-role="th">Pseudo R-squ. (CS):</td>
-<td>1.096e-07</td>
+<td>0.0002309</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Covariance Type:</td>
@@ -560,21 +560,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">const</td>
-<td>-0.5742</td>
-<td>0.012</td>
-<td>-46.382</td>
+<td>-0.6413</td>
+<td>0.013</td>
+<td>-51.297</td>
 <td>0.000</td>
-<td>-0.598</td>
-<td>-0.550</td>
+<td>-0.666</td>
+<td>-0.617</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>0.0014</td>
+<td>0.0636</td>
 <td>0.018</td>
-<td>0.079</td>
-<td>0.937</td>
-<td>-0.033</td>
-<td>0.036</td>
+<td>3.616</td>
+<td>0.000</td>
+<td>0.029</td>
+<td>0.098</td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +582,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.4686058467769683</code></pre>
+<pre><code>0.0001497166036840973</code></pre>
 </div>
 </div>
 </div>
@@ -597,66 +597,73 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>power_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(seed) {</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Binomial GLM (logistic regression)</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate synthetic data </span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Data generating process governed by parameters pc and pt</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Control group bernoulli outcomes with probability pc</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  yc <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> nc, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> pc)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  yt <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> nt, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> pt)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Dummy variable treatment = 1, control = 0</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  xc <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, nc)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  xt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, nt)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Bring together in a dataframe</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">c</span>(yc, yt), <span class="at">x =</span> <span class="fu">c</span>(xc, xt))</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit model</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data =</span> df, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">test_result =</span> <span class="cn">NA</span>,</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">pvalues =</span> <span class="cn">NA</span></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(one_sided <span class="sc">==</span> <span class="cn">FALSE</span>) {</span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract p values, returns TRUE if less than 0.05, FALSE otherwise</span></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"pvalues"</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">4</span>]</span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (one_sided <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># One sided test, halve the p-value</span></span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"pvalues"</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">4</span>]<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(side <span class="sc">==</span> <span class="st">'right'</span>) {</span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Ensure test statistic is greater than the null hypothesis for right sided test</span></span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>       results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">&amp;</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span>(side <span class="sc">==</span> <span class="st">'left'</span>) {</span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Test stat less than null for left sided test</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>       results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">&amp;</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">0</span></span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">'Error: one_sided must be TRUE or FALSE'</span>)</span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed grid</span></span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>random_grid <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fl">1e6</span>, n_sim)</span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parallelism </span></span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>available_cores <span class="ot">=</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()<span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">plan</span>(future<span class="sc">::</span>multisession, <span class="at">workers =</span> available_cores)</span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>sim_list <span class="ot">&lt;-</span> future.apply<span class="sc">::</span><span class="fu">future_Map</span>(<span class="cf">function</span>(x) <span class="fu">power_sim</span>(<span class="at">seed =</span> x), <span class="at">x =</span> random_grid, <span class="at">future.seed=</span><span class="cn">TRUE</span>)</span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, sim_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>power_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(seed, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ncontrol=</span>nc, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">propcontrol=</span>pc, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ntreatment=</span>nt, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">proptreatment=</span>pt, </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">onesided=</span>one_sided, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">left_right_side=</span>side</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                      ) {</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Binomial GLM (logistic regression)</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generate synthetic data </span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Data generating process governed by parameters pc and pt</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Control group bernoulli outcomes with probability pc</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  yc <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> ncontrol, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> propcontrol)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  yt <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> ntreatment, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> proptreatment)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Dummy variable treatment = 1, control = 0</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  xc <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, ncontrol)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  xt <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, ntreatment)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Bring together in a dataframe</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="fu">c</span>(yc, yt), <span class="at">x =</span> <span class="fu">c</span>(xc, xt))</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fit model</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data =</span> df, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">test_result =</span> <span class="cn">NA</span>,</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">pvalues =</span> <span class="cn">NA</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(onesided <span class="sc">==</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract p values, returns TRUE if less than 0.05, FALSE otherwise</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"pvalues"</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">4</span>]</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (onesided <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># One sided test, halve the p-value</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>    results[<span class="st">"pvalues"</span>] <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">4</span>]<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(left_right_side <span class="sc">==</span> <span class="st">'right'</span>) {</span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Ensure test statistic is greater than the null hypothesis for right sided test</span></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>       results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">&amp;</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span>(left_right_side <span class="sc">==</span> <span class="st">'left'</span>) {</span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Test stat less than null for left sided test</span></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>       results[<span class="st">"test_result"</span>] <span class="ot">&lt;-</span> results[<span class="dv">1</span>,<span class="st">"pvalues"</span>] <span class="sc">&lt;</span> <span class="fl">0.05</span> <span class="sc">&amp;</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>,<span class="dv">1</span>] <span class="sc">&lt;</span> <span class="dv">0</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">stop</span>(<span class="st">'Error: one_sided must be TRUE or FALSE'</span>)</span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed grid</span></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">456</span>)</span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>random_grid <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fl">1e6</span>, n_sim)</span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parallelism </span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>available_cores <span class="ot">=</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">plan</span>(future<span class="sc">::</span>multisession, <span class="at">workers =</span> available_cores)</span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>sim_list <span class="ot">&lt;-</span> future.apply<span class="sc">::</span><span class="fu">future_Map</span>(<span class="cf">function</span>(x) <span class="fu">power_sim</span>(<span class="at">seed =</span> x), <span class="at">x =</span> random_grid, <span class="at">future.seed=</span><span class="cn">TRUE</span>)</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, sim_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, calculating the power:</p>
 <div class="cell">
@@ -670,68 +677,69 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> multiprocess <span class="im">as</span> mp</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> power_sim(seed):</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    np.random.seed(seed)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate synthetic data </span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Data generating process governed by parameters pc and pt</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Control group bernoulli outcomes with probability pc</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    yc <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pc, size<span class="op">=</span>nc)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    yt <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>pt, size<span class="op">=</span>nt)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dummy variable treatment = 1, control = 0</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    xc <span class="op">=</span> np.repeat(<span class="dv">0</span>, nc)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    xt <span class="op">=</span> np.repeat(<span class="dv">1</span>, nt)</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bring together in a dataframe</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({<span class="st">"y"</span>:np.concatenate([yc,yt]),</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"const"</span>: np.repeat(<span class="dv">1</span>, (nc<span class="op">+</span>nt)),</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"x"</span>:np.concatenate([xc,xt])})</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit model</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> sm.GLM(df[[<span class="st">"y"</span>]], df[[<span class="st">"const"</span>, <span class="st">"x"</span>]], family<span class="op">=</span>sm.families.Binomial())</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> model.fit()</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> one_sided:</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract p values, returns TRUE if less than 0.05, FALSE otherwise</span></span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>        pvalue <span class="op">=</span> fit.pvalues[<span class="dv">1</span>]</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>        test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span></span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> one_sided:</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># One sided test, halve the p-value</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>        pvalue <span class="op">=</span> fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> side <span class="op">==</span> <span class="st">'right'</span>:</span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Ensure test statistic is greater than the null hypothesis for right sided test</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>            test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="kw">and</span> fit.params[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> side <span class="op">==</span> <span class="st">'left'</span>:</span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Test stat less than null for left sided test</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>            test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="kw">and</span> fit.params[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="dv">0</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>      <span class="pp">Exception</span>(<span class="st">'Error: one_sided must be TRUE or FALSE'</span>)</span>
-<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">tuple</span>([pvalue, test_result])</span>
-<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed grid</span></span>
-<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">2025</span>)</span>
-<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> <span class="bu">list</span>(np.random.randint(<span class="dv">0</span>,<span class="bu">int</span>(<span class="fl">1e6</span>), <span class="bu">int</span>(n_sim)))</span>
-<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parallelism </span></span>
-<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>nprocs <span class="op">=</span> mp.Pool()._processes<span class="op">-</span><span class="dv">1</span></span>
-<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> mp.Pool(processes<span class="op">=</span>nprocs)</span>
-<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pool.map_async(power_sim, random_grid)</span>
-<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>result_ls <span class="op">=</span> result.get()</span>
-<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>result_df <span class="op">=</span> pd.DataFrame(result_ls)</span>
-<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>result_df.columns <span class="op">=</span> [<span class="st">"pvalues"</span>, <span class="st">"test_result"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> power_sim(seed, ncontrol<span class="op">=</span>nc, propcontrol<span class="op">=</span>pc, ntreatment<span class="op">=</span>nt, proptreatment<span class="op">=</span>pt, onesided<span class="op">=</span>one_sided, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>left_right_side<span class="op">=</span>side):</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    np.random.seed(seed)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate synthetic data </span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Data generating process governed by parameters pc and pt</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Control group bernoulli outcomes with probability pc</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    yc <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>propcontrol, size<span class="op">=</span>ncontrol)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Treatment group bernoulli outcomes with probability pt</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    yt <span class="op">=</span> np.random.binomial(n<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span>proptreatment, size<span class="op">=</span>ntreatment)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dummy variable treatment = 1, control = 0</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Coefficient is the relative change in log odds of success if in treatment group</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    xc <span class="op">=</span> np.repeat(<span class="dv">0</span>, ncontrol)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    xt <span class="op">=</span> np.repeat(<span class="dv">1</span>, ntreatment)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Bring together in a dataframe</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame({<span class="st">"y"</span>:np.concatenate([yc,yt]),</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"const"</span>: np.repeat(<span class="dv">1</span>, (ncontrol<span class="op">+</span>ntreatment)),</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"x"</span>:np.concatenate([xc,xt])})</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit model</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> sm.GLM(df[[<span class="st">"y"</span>]], df[[<span class="st">"const"</span>, <span class="st">"x"</span>]], family<span class="op">=</span>sm.families.Binomial())</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> model.fit()</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> onesided:</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract p values, returns TRUE if less than 0.05, FALSE otherwise</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>        pvalue <span class="op">=</span> fit.pvalues[<span class="dv">1</span>]</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>        test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> onesided:</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># One sided test, halve the p-value</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>        pvalue <span class="op">=</span> fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> left_right_side <span class="op">==</span> <span class="st">'right'</span>:</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Ensure test statistic is greater than the null hypothesis for right sided test</span></span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>            test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="kw">and</span> fit.params[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> left_right_side <span class="op">==</span> <span class="st">'left'</span>:</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Test stat less than null for left sided test</span></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>            test_result <span class="op">=</span> pvalue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="kw">and</span> fit.params[<span class="dv">1</span>] <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>      <span class="pp">Exception</span>(<span class="st">'Error: one_sided must be TRUE or FALSE'</span>)</span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">tuple</span>([pvalue, test_result])</span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Random seed grid</span></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">2025</span>)</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> <span class="bu">list</span>(np.random.randint(<span class="dv">0</span>,<span class="bu">int</span>(<span class="fl">1e6</span>), <span class="bu">int</span>(n_sim)))</span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up parallelism </span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>nprocs <span class="op">=</span> mp.Pool()._processes<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> mp.Pool(processes<span class="op">=</span>nprocs)</span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pool.map_async(power_sim, random_grid)</span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>result_ls <span class="op">=</span> result.get()</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>result_df <span class="op">=</span> pd.DataFrame(result_ls)</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>result_df.columns <span class="op">=</span> [<span class="st">"pvalues"</span>, <span class="st">"test_result"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, calculating the power:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.mean(result_df[[<span class="st">"test_result"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.807</code></pre>
+<pre><code>0.784</code></pre>
 </div>
 </div>
 </div>
