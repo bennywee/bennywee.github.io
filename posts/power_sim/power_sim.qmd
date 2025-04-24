@@ -183,6 +183,8 @@ df = pd.DataFrame({"y":np.concatenate([yc,yt]),
                    "x":np.concatenate([xc,xt])})
 ```
 
+:::
+
 # Binomial GLM (Logistic regression)
 Next, fit a logistic regression on the synthetic data and run a hypothesis test on the treatment/control dummy variable $x$. This will be compared to a two sample proportions t test.
 
