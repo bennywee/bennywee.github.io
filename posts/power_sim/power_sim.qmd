@@ -5,7 +5,9 @@ date: "2025/04/13"
 engine: knitr
 categories:
   - R
+  - Python
   - Simulation
+  - Power analysis
 format:
   html:
     toc: true
@@ -22,7 +24,7 @@ use_virtualenv(file.path(here::here(), "posts/power_sim/venv"), required=TRUE)
 ```
 
 # Preamble
-This blog post is taken from notes of a write-up I did at a previous job a few years ago when I was conducting and designing A/B tests for marketing teams. It is a condensed summary of my understanding of power analysis by simulation inspired by [Nick Huntington-Klein's excellent lecture notes on the same topic](https://nickch-k.github.io/EconometricsSlides/Week_08/Power_Simulations.html). Writing things up is a useful way of structuring my thoughts and ensuring I understand what I'm reading. The original write-up I did also had a Bayesian implementation (or interpretation) of power analysis but I've omitted it since I'm not 100\% convinced it is the correct approach for pre-experimental design or whether other simulation frameworks are more appropriate. Anyway, hope this is useful!
+This blog post is taken from notes of a write-up I did at a previous job a few years ago when I was conducting and designing A/B tests for marketing teams. It is a condensed summary of my understanding of power analysis by simulation inspired by [Nick Huntington-Klein's excellent lecture notes on the same topic](https://nickch-k.github.io/EconometricsSlides/Week_08/Power_Simulations.html). Writing things up is a useful way of structuring my thoughts and ensuring I understand what I'm reading. The original write-up I did also had a Bayesian implementation (or interpretation) of power analysis but I've omitted it since I'm not 100\% convinced it is the correct approach for pre-experimental design or whether other simulation frameworks are more appropriate. So I've stuck with the standard frequentist approach. Anyway, hope this is useful!
 
 # Introduction
 A common task then designing experiments is to determine whether an experiment is sufficiently "powered". That is, conditional on our parameter constraints and available data, how likely will our experiment and models or tests reject the null hypothesis given that the null is false. This requires assumptions on effect sizes, the type of underlying data (continuous, proportions), equal or unequal sample sizes, equal or unequal variances, etc. 
@@ -233,59 +235,6 @@ fit.pvalues[1]/2
 # Simulate multiple times and calculate power
 The below for loop will run the same step as above 1000 times.
 
-<!-- ```{r}
-# Empty data frame to fill 
-results <- data.frame(matrix(NA, nrow = n_sim, ncol = 1))
-pvalues <- data.frame(matrix(NA, nrow = n_sim, ncol = 1))
-
-# Random seed grid
-set.seed(456)
-random_grid <- sample(1e6, n_sim)
-
-# Binomial GLM (logistic regression)
-for(i in 1:n_sim){
-  set.seed(random_grid[i])
-
-  # Generate synthetic data 
-  # Data generating process governed by parameters pc and pt
-  # Control group bernoulli outcomes with probability pc
-  yc <- rbinom(n = nc, size = 1, prob = pc)
-
-  # Treatment group bernoulli outcomes with probability pt
-  yt <- rbinom(n = nt, size = 1, prob = pt)
-
-  # Dummy variable treatment = 1, control = 0
-  # Coefficient is the relative change in log odds of success if in treatment group
-  xc <- rep(0, nc)
-  xt <- rep(1, nt)
-
-  # Bring together in a dataframe
-  df <- data.frame(y = c(yc, yt), x = c(xc, xt))
-
-  # Fit model
-  model <- glm(y~x, data = df, family = 'binomial')
-
-  if(one_sided == FALSE) {
-    # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
-    pvalues[i,1] <- coef(summary(model))[2,4]
-    results[i,1] <- pvalues[i,1] < 0.05
-  } else if (one_sided == TRUE) {
-    # One sided test, halve the p-value
-    pvalues[i,1] <- coef(summary(model))[2,4]/2
-
-    if(side == 'right') {
-      # Ensure test statistic is greater than the null hypothesis for right sided test
-       results[i,1] <- pvalues[i,1] < 0.05 & coef(summary(model))[2,1] > 0
-    }
-    else if(side == 'left') {
-      # Test stat less than null for left sided test
-       results[i,1] <- pvalues[i,1] < 0.05 & coef(summary(model))[2,1] < 0
-    } else {
-      print('Error: one_sided must be TRUE or FALSE')
-    }
-  }
-}
-``` -->
 ::: {.panel-tabset}
 
 ## R
@@ -360,6 +309,8 @@ mean(sim_df[["test_result"]])
 
 ## Python
 ```{python}
+import multiprocess as mp
+
 def power_sim(seed):
     np.random.seed(seed)
     # Generate synthetic data 
@@ -409,14 +360,9 @@ def power_sim(seed):
 random.seed(2025)
 random_grid = list(np.random.randint(0,int(1e6), int(n_sim)))
 
-# result = [power_sim(seed) for seed in random_grid]
-
-
 # Set up parallelism 
-import multiprocess as mp
 nprocs = mp.Pool()._processes-1
 pool = mp.Pool(processes=nprocs)
-# result = [pool.map_async(power_sim, seed) for seed in [1,2,3]]
 result = pool.map_async(power_sim, random_grid)
 result_ls = result.get()
 result_df = pd.DataFrame(result_ls)
@@ -433,4 +379,4 @@ np.mean(result_df[["test_result"]])
 
 Great! The null was rejected for around 80\% of simulations which is in line with the original power analysis. Increasing the simulation number should see this get closer to 80\%.
 
-The original use case of this experiment was to consider different treatment and control group sizes. The original power test analysis assumes equal sample sizes in treatment and control. Instead of looking for an appropriate statistical test, I can just reset the parameters above to have 70\% treatment and 30\% control proportions.
+The original use case of this experiment was to consider different treatment and control group sizes. The original power test analysis assumes equal, independent sample sizes in treatment and control. Instead of looking for an appropriate statistical test, I can just reset the parameters above to have 70\% treatment and 30\% control proportions. This enables the most flexibility when it comes to pre-analysis design since I can simulate data with other properties for the use case at hand.
