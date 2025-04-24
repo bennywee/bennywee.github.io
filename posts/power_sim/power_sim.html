@@ -517,17 +517,17 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">Method:</td>
 <td>IRLS</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-36835.</td>
+<td>-37013.</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
 <td>Thu, 24 Apr 2025</td>
 <td data-quarto-table-cell-role="th">Deviance:</td>
-<td>73670.</td>
+<td>74026.</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>13:48:14</td>
+<td>14:00:50</td>
 <td data-quarto-table-cell-role="th">Pearson chi2:</td>
 <td>5.66e+04</td>
 </tr>
@@ -535,7 +535,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">No. Iterations:</td>
 <td>4</td>
 <td data-quarto-table-cell-role="th">Pseudo R-squ. (CS):</td>
-<td>0.0002624</td>
+<td>1.096e-07</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Covariance Type:</td>
@@ -560,21 +560,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">const</td>
-<td>-0.6300</td>
+<td>-0.5742</td>
 <td>0.012</td>
-<td>-50.474</td>
+<td>-46.382</td>
 <td>0.000</td>
-<td>-0.654</td>
-<td>-0.605</td>
+<td>-0.598</td>
+<td>-0.550</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>0.0677</td>
+<td>0.0014</td>
 <td>0.018</td>
-<td>3.855</td>
-<td>0.000</td>
-<td>0.033</td>
-<td>0.102</td>
+<td>0.079</td>
+<td>0.937</td>
+<td>-0.033</td>
+<td>0.036</td>
 </tr>
 </tbody>
 </table>
@@ -582,7 +582,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>5.798078294656323e-05</code></pre>
+<pre><code>0.4686058467769683</code></pre>
 </div>
 </div>
 </div>
@@ -731,7 +731,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.mean(result_df[[<span class="st">"test_result"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.811</code></pre>
+<pre><code>0.807</code></pre>
 </div>
 </div>
 </div>
