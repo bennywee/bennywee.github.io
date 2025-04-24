@@ -227,6 +227,8 @@ window.Quarto = {
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#benchmarking" id="toc-benchmarking" class="nav-link" data-scroll-target="#benchmarking">Benchmarking</a></li>
   <li><a href="#synthetic-data-simulation-based-on-parameter-settings" id="toc-synthetic-data-simulation-based-on-parameter-settings" class="nav-link" data-scroll-target="#synthetic-data-simulation-based-on-parameter-settings">Synthetic data simulation based on parameter settings</a></li>
+  <li><a href="#binomial-glm-logistic-regression" id="toc-binomial-glm-logistic-regression" class="nav-link" data-scroll-target="#binomial-glm-logistic-regression">Binomial GLM (Logistic regression)</a></li>
+  <li><a href="#simulate-multiple-times-and-calculate-power" id="toc-simulate-multiple-times-and-calculate-power" class="nav-link" data-scroll-target="#simulate-multiple-times-and-calculate-power">Simulate multiple times and calculate power</a></li>
   </ul>
 </nav>
     </div>
@@ -361,9 +363,9 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 <p>Next, simulate bernoulli outcomes for treatment and control group based on above parameter settings. <span class="math inline">\(y\)</span> is the outcome variable (1 for product uptake, 0 for no uptake) and x is a binary indicator variable (0 for control, 1 for treatment).</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
-<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2025</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -393,7 +395,7 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -418,6 +420,10 @@ NOTE: n is number in *each* group</code></pre>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"const"</span>: np.repeat(<span class="dv">1</span>, (nc<span class="op">+</span>nt)),</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"x"</span>:np.concatenate([xc,xt])})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
+</div>
+</div>
+</section>
 <section id="binomial-glm-logistic-regression" class="level1">
 <h1>Binomial GLM (Logistic regression)</h1>
 <p>Next, fit a logistic regression on the synthetic data and run a hypothesis test on the treatment/control dummy variable <span class="math inline">\(x\)</span>. This will be compared to a two sample proportions t test.</p>
@@ -433,9 +439,9 @@ H_1: \beta_1 &amp;&gt; 0
 <p>So the hypothesis to test is if <span class="math inline">\(\beta_1\)</span> is larger than 0, significant at the 5% level. If we were to run this experiment multiple times under the same parameter settings, we should expect to correctly reject the null in favour of the alternative hypothesis 80% of the time (although this does not tell us anything about the uncertainty of the effect size).</p>
 <p>Fitting the model below gives a significant result. The next step is to run this exercise multiple times to get a power estimate.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate/fit logistic regression</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(y<span class="sc">~</span>x, <span class="at">data =</span> df, <span class="at">family =</span> <span class="st">'binomial'</span>)</span>
@@ -469,7 +475,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -511,17 +517,17 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">Method:</td>
 <td>IRLS</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-36799.</td>
+<td>-36835.</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
 <td>Thu, 24 Apr 2025</td>
 <td data-quarto-table-cell-role="th">Deviance:</td>
-<td>73598.</td>
+<td>73670.</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>13:41:46</td>
+<td>13:48:14</td>
 <td data-quarto-table-cell-role="th">Pearson chi2:</td>
 <td>5.66e+04</td>
 </tr>
@@ -529,7 +535,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <td data-quarto-table-cell-role="th">No. Iterations:</td>
 <td>4</td>
 <td data-quarto-table-cell-role="th">Pseudo R-squ. (CS):</td>
-<td>5.957e-05</td>
+<td>0.0002624</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Covariance Type:</td>
@@ -554,21 +560,21 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">const</td>
-<td>-0.6175</td>
+<td>-0.6300</td>
 <td>0.012</td>
-<td>-49.571</td>
+<td>-50.474</td>
 <td>0.000</td>
-<td>-0.642</td>
-<td>-0.593</td>
+<td>-0.654</td>
+<td>-0.605</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">x</td>
-<td>0.0323</td>
+<td>0.0677</td>
 <td>0.018</td>
-<td>1.837</td>
-<td>0.066</td>
-<td>-0.002</td>
-<td>0.067</td>
+<td>3.855</td>
+<td>0.000</td>
+<td>0.033</td>
+<td>0.102</td>
 </tr>
 </tbody>
 </table>
@@ -576,7 +582,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fit.pvalues[<span class="dv">1</span>]<span class="op">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.03313530887782304</code></pre>
+<pre><code>5.798078294656323e-05</code></pre>
 </div>
 </div>
 </div>
@@ -587,9 +593,9 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <h1>Simulate multiple times and calculate power</h1>
 <p>The below for loop will run the same step as above 1000 times.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
-<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>power_sim <span class="ot">&lt;-</span> <span class="cf">function</span>(seed) {</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Binomial GLM (logistic regression)</span></span>
@@ -660,7 +666,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> multiprocess <span class="im">as</span> mp</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -725,7 +731,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.mean(result_df[[<span class="st">"test_result"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.821</code></pre>
+<pre><code>0.811</code></pre>
 </div>
 </div>
 </div>
@@ -735,10 +741,6 @@ Number of Fisher Scoring iterations: 4</code></pre>
 <p>The original use case of this experiment was to consider different treatment and control group sizes. The original power test analysis assumes equal, independent sample sizes in treatment and control. Instead of looking for an appropriate statistical test, I can just reset the parameters above to have 70% treatment and 30% control proportions. This enables the most flexibility when it comes to pre-analysis design since I can simulate data with other properties for the use case at hand.</p>
 
 
-</section>
-</div>
-</div>
-</div>
 </section>
 
 </main> <!-- /main -->
