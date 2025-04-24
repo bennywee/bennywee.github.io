@@ -241,22 +241,29 @@ The below for loop will run the same step as above 1000 times.
 
 ## R
 ```{r}
-power_sim <- function(seed) {
+power_sim <- function(seed, 
+                      ncontrol=nc, 
+                      propcontrol=pc, 
+                      ntreatment=nt, 
+                      proptreatment=pt, 
+                      onesided=one_sided, 
+                      left_right_side=side
+                      ) {
   # Binomial GLM (logistic regression)
   set.seed(seed)
 
   # Generate synthetic data 
   # Data generating process governed by parameters pc and pt
   # Control group bernoulli outcomes with probability pc
-  yc <- rbinom(n = nc, size = 1, prob = pc)
+  yc <- rbinom(n = ncontrol, size = 1, prob = propcontrol)
 
   # Treatment group bernoulli outcomes with probability pt
-  yt <- rbinom(n = nt, size = 1, prob = pt)
+  yt <- rbinom(n = ntreatment, size = 1, prob = proptreatment)
 
   # Dummy variable treatment = 1, control = 0
   # Coefficient is the relative change in log odds of success if in treatment group
-  xc <- rep(0, nc)
-  xt <- rep(1, nt)
+  xc <- rep(0, ncontrol)
+  xt <- rep(1, ntreatment)
 
   # Bring together in a dataframe
   df <- data.frame(y = c(yc, yt), x = c(xc, xt))
@@ -269,19 +276,19 @@ power_sim <- function(seed) {
     pvalues = NA
   )
 
-  if(one_sided == FALSE) {
+  if(onesided == FALSE) {
     # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
     results["pvalues"] <- coef(summary(model))[2,4]
     results["test_result"] <- results[1,"pvalues"] < 0.05
-  } else if (one_sided == TRUE) {
+  } else if (onesided == TRUE) {
     # One sided test, halve the p-value
     results["pvalues"] <- coef(summary(model))[2,4]/2
 
-    if(side == 'right') {
+    if(left_right_side == 'right') {
       # Ensure test statistic is greater than the null hypothesis for right sided test
        results["test_result"] <- results[1,"pvalues"] < 0.05 & coef(summary(model))[2,1] > 0
     }
-    else if(side == 'left') {
+    else if(left_right_side == 'left') {
       # Test stat less than null for left sided test
        results["test_result"] <- results[1,"pvalues"] < 0.05 & coef(summary(model))[2,1] < 0
     } else {
@@ -313,43 +320,44 @@ mean(sim_df[["test_result"]])
 ```{python}
 import multiprocess as mp
 
-def power_sim(seed):
+def power_sim(seed, ncontrol=nc, propcontrol=pc, ntreatment=nt, proptreatment=pt, onesided=one_sided, 
+left_right_side=side):
     np.random.seed(seed)
     # Generate synthetic data 
     # Data generating process governed by parameters pc and pt
     # Control group bernoulli outcomes with probability pc
-    yc = np.random.binomial(n=1, p=pc, size=nc)
+    yc = np.random.binomial(n=1, p=propcontrol, size=ncontrol)
     
     # Treatment group bernoulli outcomes with probability pt
-    yt = np.random.binomial(n=1, p=pt, size=nt)
+    yt = np.random.binomial(n=1, p=proptreatment, size=ntreatment)
     
     # Dummy variable treatment = 1, control = 0
     # Coefficient is the relative change in log odds of success if in treatment group
-    xc = np.repeat(0, nc)
-    xt = np.repeat(1, nt)
+    xc = np.repeat(0, ncontrol)
+    xt = np.repeat(1, ntreatment)
     
     # Bring together in a dataframe
     df = pd.DataFrame({"y":np.concatenate([yc,yt]),
-                     "const": np.repeat(1, (nc+nt)),
+                     "const": np.repeat(1, (ncontrol+ntreatment)),
                      "x":np.concatenate([xc,xt])})
     
     # Fit model
     model = sm.GLM(df[["y"]], df[["const", "x"]], family=sm.families.Binomial())
     fit = model.fit()
     
-    if not one_sided:
+    if not onesided:
         # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
         pvalue = fit.pvalues[1]
         test_result = pvalue < 0.05
-    elif one_sided:
+    elif onesided:
         # One sided test, halve the p-value
         pvalue = fit.pvalues[1]/2
         
-        if side == 'right':
+        if left_right_side == 'right':
             # Ensure test statistic is greater than the null hypothesis for right sided test
             test_result = pvalue < 0.05 and fit.params[1] > 0
             
-        elif side == 'left':
+        elif left_right_side == 'left':
             # Test stat less than null for left sided test
             test_result = pvalue < 0.05 and fit.params[1] < 0
             
