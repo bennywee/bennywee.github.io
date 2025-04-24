@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-04-24">
 
-<title>Blog – Benjamin Wee</title>
+<title>Master’s presentation to Adelaide data science group – Benjamin Wee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1e4adc4738d01e9cee2329e023e43f50.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-1e4adc4738d01e9cee2329e023e43f50.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +67,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +79,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Benjamin Wee</span>
     </a>
   </div>
@@ -149,7 +90,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -177,222 +118,85 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Blog</h1>
+    <div class="quarto-title column-body">
+      <h1 class="title">Master’s presentation to Adelaide data science group</h1>
                       </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 24, 2025</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QmF5ZXNpYW4lMjBzdGF0aXN0aWNz">Bayesian statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWF0cGxvdGxpYg==">Matplotlib <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UG93ZXIlMjBhbmFseXNpcw==">Power analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(2)</span></div><div class="category" data-category="U2ltdWxhdGlvbg==">Simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3Rhbg==">Stan <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>Master’s research presentation on stochastic volatility and simulation based calibration to the Adelaide data science group on November 2023.</p>
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+<p>Simulation Based Calibration (SBC) (Talts, Betancourt, Simpson, Vehtari, &amp; Gelman, 2020) is applied to analyse two commonly used, competing Markov chain Monte Carlo algorithms for estimating the posterior distribution of a stochastic volatility model. In particular, the bespoke ‘off-set mixture approximation’ algorithm proposed by Kim, Shephard, and Chib (1998) is explored together with a Hamiltonian Monte Carlo algorithm implemented through Stan (Stan Development Team, 2023). The SBC analysis involves a simulation study to assess whether each sampling algorithm has the capacity to produce valid inference for the correctly specified model, while also characterising statistical efficiency through the effective sample size. Results show that Stan’s No-U-Turn sampler, an implementation of Hamiltonian Monte Carlo, produces a well-calibrated posterior estimate while the celebrated off-set mixture approach is less efficient and poorly calibrated, though model parameterisation also plays a role.</p>
+<div class="cell">
+<style type="text/css">
+#title-block-header .description {
+    display: none;
+}
+</style>
+</div>
+<div class="cell">
+<style type="text/css">
+.embed-container {
+    position: relative;
+    padding-bottom: 129%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+</div>
+<div class="embed-container">
+  <iframe src="presentation.pdf" style="border: 0.5px"></iframe>
+</div>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1745452800000" data-listing-file-modified-sort="1745467724602" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="225">
-<div class="thumbnail">
-<p><a href="./posts/masters_presentation_adelaide/index.html" class="no-external"></a></p><a href="./posts/masters_presentation_adelaide/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/masters_presentation_adelaide/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/masters_presentation_adelaide/index.html" class="no-external">Master’s presentation to Adelaide data science group</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/masters_presentation_adelaide/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/masters_presentation_adelaide/index.html" class="no-external">Master’s research presentation on stochastic volatility and simulation based calibration to the Adelaide data science group on November 2023.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/masters_presentation_adelaide/index.html" class="no-external">
-<div class="listing-date">
-Apr 24, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ1B5dGhvbiUyQ1NpbXVsYXRpb24lMkNQb3dlciUyMGFuYWx5c2lz" data-listing-date-sort="1744502400000" data-listing-file-modified-sort="1745467724608" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2500">
-<div class="thumbnail">
-<p><a href="./posts/power_sim/power_sim.html" class="no-external"></a></p><a href="./posts/power_sim/power_sim.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/power_sim/power_sim.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/power_sim/power_sim.html" class="no-external">Power analysis by simulation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/power_sim/power_sim.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbg=='); return false;">
-Simulation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UG93ZXIlMjBhbmFseXNpcw=='); return false;">
-Power analysis
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/power_sim/power_sim.html" class="no-external">This blog post is taken from notes of a write-up I did at a previous job a few years ago when I was conducting and designing A/B tests for marketing teams. It is a condensed…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/power_sim/power_sim.html" class="no-external">
-<div class="listing-date">
-Apr 13, 2025
-</div>
-<div class="listing-author">
-Benjamin Wee
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="UHl0aG9u" data-listing-date-sort="1684108800000" data-listing-file-modified-sort="1745467724608" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1329">
-<div class="thumbnail">
-<p><a href="./posts/python_env_setup/python_env_setup.html" class="no-external"></a></p><a href="./posts/python_env_setup/python_env_setup.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/python_env_setup/python_env_setup.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/python_env_setup/python_env_setup.html" class="no-external">Introduction to Python Environments</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/python_env_setup/python_env_setup.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/python_env_setup/python_env_setup.html" class="no-external">This post was promised to some friendly folk in the R community who were interested in using python. It is a conceptual introduction and a basic guide to how to set up…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/python_env_setup/python_env_setup.html" class="no-external">
-<div class="listing-date">
-May 15, 2023
-</div>
-<div class="listing-author">
-Benjamin Wee
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="QmF5ZXNpYW4lMjBzdGF0aXN0aWNzJTJDUiUyQ1B5dGhvbiUyQ1N0YW4=" data-listing-date-sort="1605916800000" data-listing-file-modified-sort="1745467724493" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="52" data-listing-word-count-sort="10209">
-<div class="thumbnail">
-<p><a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external"></a></p><a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external">
-<p class="card-img-top"><img src="posts/bayesian_workflow_stats_rethinking/figures/2_pooling_scatter.svg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external">Applying a bayesian workflow: lessons from Statistical Rethinking (I)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QmF5ZXNpYW4lMjBzdGF0aXN0aWNz'); return false;">
-Bayesian statistics
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('U3Rhbg=='); return false;">
-Stan
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external">I spent the last few years studying Bayesian statistics in my spare time. Most recently, I completed Richard McElreath’s Statistical Rethinking - including his 2017 lecture…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html" class="no-external">
-<div class="listing-date">
-Nov 21, 2020
-</div>
-<div class="listing-author">
-Benjamin Wee
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="UHl0aG9uJTJDTWF0cGxvdGxpYg==" data-listing-date-sort="1586131200000" data-listing-file-modified-sort="1745467724591" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2364">
-<div class="thumbnail">
-<p><a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external"></a></p><a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external">
-<p class="card-img-top"><img src="posts/learning_matplotlib/1.svg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external">Learning Matplotlib - Lessons from a ggplot user</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('TWF0cGxvdGxpYg=='); return false;">
-Matplotlib
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external">I love R. I wouldn’t be where I am in my career without the tools of the Tidyverse and kindness of the Rstats and Rladies communities. It provided me a platform to entering…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/learning_matplotlib/2020-04-06_Learning_matplotlib.html" class="no-external">
-<div class="listing-date">
-Apr 6, 2020
-</div>
-<div class="listing-author">
-Benjamin Wee
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

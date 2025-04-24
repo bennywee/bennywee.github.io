@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/masters_presentation_adelaide/index.html",
       "/posts/power_sim/power_sim.html",
       "/posts/python_env_setup/python_env_setup.html",
       "/posts/bayesian_workflow_stats_rethinking/applying_a_bayesian_workflow_pt1_post.html",
