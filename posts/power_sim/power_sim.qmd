@@ -1,0 +1,436 @@
+---
+title: "Power analysis by simulation"
+author: "Benjamin Wee"
+date: "2025/04/13"
+engine: knitr
+categories:
+  - R
+  - Simulation
+format:
+  html:
+    toc: true
+---
+
+```{r}
+#| echo: false
+# Note, create a python virtual env first and set reticulate python there. Install python packages directly
+# inside venv. Also, there will be conflicting environment issues when using radian, since this uses a
+# separate python env. To overcome this, test in regular R session.
+library(reticulate)
+Sys.setenv(RETICULATE_PYTHON = file.path(here::here(), "posts/power_sim/venv/bin/python"))
+use_virtualenv(file.path(here::here(), "posts/power_sim/venv"), required=TRUE)
+```
+
+# Preamble
+This blog post is taken from notes of a write-up I did at a previous job a few years ago when I was conducting and designing A/B tests for marketing teams. It is a condensed summary of my understanding of power analysis by simulation inspired by [Nick Huntington-Klein's excellent lecture notes on the same topic](https://nickch-k.github.io/EconometricsSlides/Week_08/Power_Simulations.html). Writing things up is a useful way of structuring my thoughts and ensuring I understand what I'm reading. The original write-up I did also had a Bayesian implementation (or interpretation) of power analysis but I've omitted it since I'm not 100\% convinced it is the correct approach for pre-experimental design or whether other simulation frameworks are more appropriate. Anyway, hope this is useful!
+
+# Introduction
+A common task then designing experiments is to determine whether an experiment is sufficiently "powered". That is, conditional on our parameter constraints and available data, how likely will our experiment and models or tests reject the null hypothesis given that the null is false. This requires assumptions on effect sizes, the type of underlying data (continuous, proportions), equal or unequal sample sizes, equal or unequal variances, etc. 
+
+I've been asked many times throughout my career to size up an experiment using standard frequentist tools. However, every time I return tot he exercise I get swamped with the variety of calculators and statistical tests that can be used - most only valid under very specific conditions and for relatively simple experiments. Typically in most commercial experiment designs, there are a lot of restrictions which may impact these calculations that cannot be adjusted directly.
+
+So I turned so _simulating_ my power analysis. Simulation is a great tool for flexible estimating the impact of different parameters and assumptions. This is done by fitting many models (or running tests) on synthetic data generated from a known data generating process (DGP). The DGP can be adjusted based on our assumptions and constraints. This is especially useful when greater complexity is built into the experimental design (multiple treatments, additional co-variates, generalising the impact of multiple experiments, etc).
+
+# Setup
+I conducted an old experiment that measured the impact of a marketing campaign on product uptake for a treatment group compared to a representative control group. The specified parameters were:
+
+- Base control uptake: **$p_c = 0.35$**
+- Minimum detectable effect of treatment **$p_t = 0.36$**
+- Confidence: **($1 - \alpha) = 0.95$**
+- Power: **($1 - \beta) = 0.8$**
+- Type: **One sided**
+- Sample size: **n**
+
+So assuming a base product uptake of $p_c = 35\%$, the minimum effect to be detected at 80\% power is 1\% ($p_t-p_c$) with a 5\% false positive rate under the null hypothesis.
+
+There are two approaches to this analysis:
+
+1) Calculate power for a known n (since this size can be restricted at the very start)
+
+2) Calculate n required for a given power (more typical question that is asked)
+
+For my use case, I was given a restricted n and had to think of different ways of determining power for asymmetric control and treatment group sizes, so I will demonstrate 1).
+
+**Typical workflow**
+
+1) Set parameters
+
+2) Simulate synthetic data given these parameters
+
+3) Fit model on data / run statistical rest
+
+4) Extract desired estimates (p values of confidence intervals, test statistics)
+
+5) Repeat 1)-4) multiple times
+
+6) Determine what proportion tests were "statistically significant" (power estimate)
+
+# Benchmarking
+Before running a simulation, let's benchmark our results against a typical power analysis. Based on our parameter settings we need ~28,312 samples in both treatment and control. The goal is to replicate these results by simulation.
+
+
+::: {.panel-tabset}
+## R
+```{r}
+power.prop.test(p1 = 0.35,
+                p2 = 0.36,
+                power = 0.8,
+                sig.level = 0.05,
+                alternative = 'one.sided')
+```
+
+## Python
+```{python}
+import statsmodels.stats.api as sms
+
+effect_size = sms.proportion_effectsize(0.36, 0.35)
+sms.NormalIndPower().solve_power(effect_size, power=0.8, alpha=0.05, ratio=1, alternative = "larger")
+```
+
+:::
+
+# Synthetic data simulation based on parameter settings
+First, set parameter values. These can be changed and re-run for other yse cases.
+
+::: {.panel-tabset}
+
+## R
+```{r}
+# Parameters
+n <- 28312*2         # Total sample size
+pc <- 0.35           # Success probability in control group (inferred from domain knowledge)
+pt <- 0.36           # Success probability in treatment group (minimum 'practical' effect size)
+n_sim <- 1e3         # Number of simulations to run
+treatment_prop <- 0.5 # Proportion in treatment
+one_sided <- TRUE     # True is one sided test
+side <- "right"       # Defaults to right sided test if one sided test. Input 'left' for left sided test
+
+# Sample size of each group
+control_prop = 1 - treatment_prop # Proportion in control
+nt <- n * treatment_prop           # Treatment group size
+nc <- n * control_prop             # Control group size
+```
+
+## Python
+```{python}
+# Parameters
+n = 28312*2         # Total sample size
+pc = 0.35           # Success probability in control group (inferred from domain knowledge)
+pt = 0.36           # Success probability in treatment group (minimum 'practical' effect size)
+n_sim = 1e3         # Number of simulations to run
+treatment_prop = 0.5 # Proportion in treatment
+one_sided = True     # True is one sided test
+side = "right"      # Right sided test
+
+# Sample size of each group
+control_prop = 1 - treatment_prop # Proportion in control
+nt = int(n * treatment_prop)      # Treatment group size
+nc = int(n * control_prop)        # Control group size
+```
+
+:::
+
+Next, simulate bernoulli outcomes for treatment and control group based on above parameter settings. $y$ is the outcome variable (1 for product uptake, 0 for no uptake) and x is a binary indicator variable (0 for control, 1 for treatment).
+
+::: {.panel-tabset}
+
+## R
+```{r}
+set.seed(2025)
+
+# Control group bernoulli outcomes with probability pc
+yc <- rbinom(n = nc, size = 1, prob = pc)
+
+# Treatment group bernoulli outcomes with probability pt
+yt <- rbinom(n = nt, size = 1, prob = pt)
+
+# Dummy variable 1= treatment, 0 = control.
+# Coefficient is the relative change in log odds of success if in treatment group
+xc <- rep(0, nc)
+xt <- rep(1, nt)
+
+# Bring together in a data frame
+df <- data.frame(y = c(yc, yt), x = c(xc, xt))
+
+head(df)
+```
+
+## Python
+```{python}
+import random
+
+import numpy as np
+import pandas as pd
+
+random.seed(2025)
+
+# Control group bernoulli outcomes with probability pc
+yc = np.random.binomial(n=1, p=pc, size=nc)
+
+# Treatment group bernoulli outcomes with probability pt
+yt = np.random.binomial(n=1, p=pt, size=nt)
+
+# Dummy variable 1= treatment, 0 = control.
+# Coefficient is the relative change in log odds of success if in treatment group
+xc = np.repeat(0, nc)
+xt = np.repeat(1, nt)
+
+# Bring together in a data frame
+df = pd.DataFrame({"y":np.concatenate([yc,yt]),
+                   "const": np.repeat(1, (nc+nt)),
+                   "x":np.concatenate([xc,xt])})
+```
+
+# Binomial GLM (Logistic regression)
+Next, fit a logistic regression on the synthetic data and run a hypothesis test on the treatment/control dummy variable $x$. This will be compared to a two sample proportions t test.
+
+But why regression? Well, most statistical tests and estimation procedures (t-tests, ANOVA, etc) are all cases of general linear models that can be estimated with regression. This gives us the most flexibility when considering even more complicated experimental designs (e.g. adding other x variables for pre treatment adjustment of certain demographic characteristics, stratification across multiple cohorts, etc). It also gives a clear estimation strategy instead of fumbling through the documentation of different statistical tests.
+
+$$
+\begin{aligned}
+y_i \sim Binomial&(n_i,p_i) \\
+log \left(\frac{p_i}{1-p_i}\right) &= \beta_0 + \bf X \beta_1 \\
+H_0: \beta_1 &= 0 \\
+H_1: \beta_1 &> 0
+\end{aligned}
+$$
+
+So the hypothesis to test is if $\beta_1$ is larger than 0, significant at the 5\% level. If we were to run this experiment multiple times under the same parameter settings, we should expect to correctly reject the null in favour of the alternative hypothesis 80\% of the time (although this does not tell us anything about the uncertainty of the effect size). 
+
+Fitting the model below gives a significant result. The next step is to run this exercise multiple times to get a power estimate.
+
+::: {.panel-tabset}
+
+## R
+```{r}
+# Estimate/fit logistic regression
+model <- glm(y~x, data = df, family = 'binomial')
+
+# Model results
+summary(model)
+
+# Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)
+coef(summary(model))[2,4]/2
+```
+
+## Python
+```{python}
+import statsmodels.api as sm
+
+# Estimate/fit logistic regression
+model = sm.GLM(df[["y"]], df[["const", "x"]], family=sm.families.Binomial())
+fit = model.fit()
+
+# Model results
+fit.summary()
+
+# Extract p value and divide by 2 for one sided test (Wald test statistic is asymptotically z distributed)
+fit.pvalues[1]/2
+```
+
+:::
+
+# Simulate multiple times and calculate power
+The below for loop will run the same step as above 1000 times.
+
+<!-- ```{r}
+# Empty data frame to fill 
+results <- data.frame(matrix(NA, nrow = n_sim, ncol = 1))
+pvalues <- data.frame(matrix(NA, nrow = n_sim, ncol = 1))
+
+# Random seed grid
+set.seed(456)
+random_grid <- sample(1e6, n_sim)
+
+# Binomial GLM (logistic regression)
+for(i in 1:n_sim){
+  set.seed(random_grid[i])
+
+  # Generate synthetic data 
+  # Data generating process governed by parameters pc and pt
+  # Control group bernoulli outcomes with probability pc
+  yc <- rbinom(n = nc, size = 1, prob = pc)
+
+  # Treatment group bernoulli outcomes with probability pt
+  yt <- rbinom(n = nt, size = 1, prob = pt)
+
+  # Dummy variable treatment = 1, control = 0
+  # Coefficient is the relative change in log odds of success if in treatment group
+  xc <- rep(0, nc)
+  xt <- rep(1, nt)
+
+  # Bring together in a dataframe
+  df <- data.frame(y = c(yc, yt), x = c(xc, xt))
+
+  # Fit model
+  model <- glm(y~x, data = df, family = 'binomial')
+
+  if(one_sided == FALSE) {
+    # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
+    pvalues[i,1] <- coef(summary(model))[2,4]
+    results[i,1] <- pvalues[i,1] < 0.05
+  } else if (one_sided == TRUE) {
+    # One sided test, halve the p-value
+    pvalues[i,1] <- coef(summary(model))[2,4]/2
+
+    if(side == 'right') {
+      # Ensure test statistic is greater than the null hypothesis for right sided test
+       results[i,1] <- pvalues[i,1] < 0.05 & coef(summary(model))[2,1] > 0
+    }
+    else if(side == 'left') {
+      # Test stat less than null for left sided test
+       results[i,1] <- pvalues[i,1] < 0.05 & coef(summary(model))[2,1] < 0
+    } else {
+      print('Error: one_sided must be TRUE or FALSE')
+    }
+  }
+}
+``` -->
+::: {.panel-tabset}
+
+## R
+```{r}
+power_sim <- function(seed) {
+  # Binomial GLM (logistic regression)
+  set.seed(seed)
+
+  # Generate synthetic data 
+  # Data generating process governed by parameters pc and pt
+  # Control group bernoulli outcomes with probability pc
+  yc <- rbinom(n = nc, size = 1, prob = pc)
+
+  # Treatment group bernoulli outcomes with probability pt
+  yt <- rbinom(n = nt, size = 1, prob = pt)
+
+  # Dummy variable treatment = 1, control = 0
+  # Coefficient is the relative change in log odds of success if in treatment group
+  xc <- rep(0, nc)
+  xt <- rep(1, nt)
+
+  # Bring together in a dataframe
+  df <- data.frame(y = c(yc, yt), x = c(xc, xt))
+
+  # Fit model
+  model <- glm(y~x, data = df, family = 'binomial')
+
+  results <- data.frame(
+    test_result = NA,
+    pvalues = NA
+  )
+
+  if(one_sided == FALSE) {
+    # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
+    results["pvalues"] <- coef(summary(model))[2,4]
+    results["test_result"] <- results[1,"pvalues"] < 0.05
+  } else if (one_sided == TRUE) {
+    # One sided test, halve the p-value
+    results["pvalues"] <- coef(summary(model))[2,4]/2
+
+    if(side == 'right') {
+      # Ensure test statistic is greater than the null hypothesis for right sided test
+       results["test_result"] <- results[1,"pvalues"] < 0.05 & coef(summary(model))[2,1] > 0
+    }
+    else if(side == 'left') {
+      # Test stat less than null for left sided test
+       results["test_result"] <- results[1,"pvalues"] < 0.05 & coef(summary(model))[2,1] < 0
+    } else {
+      stop('Error: one_sided must be TRUE or FALSE')
+    }
+  }
+  return(results)
+}
+
+# Random seed grid
+set.seed(456)
+random_grid <- sample(1e6, n_sim)
+
+# Set up parallelism 
+available_cores = parallel::detectCores()-1
+future::plan(future::multisession, workers = available_cores)
+
+sim_list <- future.apply::future_Map(function(x) power_sim(seed = x), x = random_grid, future.seed=TRUE)
+sim_df <- do.call(rbind, sim_list)
+```
+
+Finally, calculating the power:
+
+```{r}
+mean(sim_df[["test_result"]])
+```
+
+## Python
+```{python}
+def power_sim(seed):
+    np.random.seed(seed)
+    # Generate synthetic data 
+    # Data generating process governed by parameters pc and pt
+    # Control group bernoulli outcomes with probability pc
+    yc = np.random.binomial(n=1, p=pc, size=nc)
+    
+    # Treatment group bernoulli outcomes with probability pt
+    yt = np.random.binomial(n=1, p=pt, size=nt)
+    
+    # Dummy variable treatment = 1, control = 0
+    # Coefficient is the relative change in log odds of success if in treatment group
+    xc = np.repeat(0, nc)
+    xt = np.repeat(1, nt)
+    
+    # Bring together in a dataframe
+    df = pd.DataFrame({"y":np.concatenate([yc,yt]),
+                     "const": np.repeat(1, (nc+nt)),
+                     "x":np.concatenate([xc,xt])})
+    
+    # Fit model
+    model = sm.GLM(df[["y"]], df[["const", "x"]], family=sm.families.Binomial())
+    fit = model.fit()
+    
+    if not one_sided:
+        # Extract p values, returns TRUE if less than 0.05, FALSE otherwise
+        pvalue = fit.pvalues[1]
+        test_result = pvalue < 0.05
+    elif one_sided:
+        # One sided test, halve the p-value
+        pvalue = fit.pvalues[1]/2
+        
+        if side == 'right':
+            # Ensure test statistic is greater than the null hypothesis for right sided test
+            test_result = pvalue < 0.05 and fit.params[1] > 0
+            
+        elif side == 'left':
+            # Test stat less than null for left sided test
+            test_result = pvalue < 0.05 and fit.params[1] < 0
+            
+    else:
+      Exception('Error: one_sided must be TRUE or FALSE')
+    
+    return tuple([pvalue, test_result])
+
+# Random seed grid
+random.seed(2025)
+random_grid = list(np.random.randint(0,int(1e6), int(n_sim)))
+
+# result = [power_sim(seed) for seed in random_grid]
+
+
+# Set up parallelism 
+import multiprocess as mp
+nprocs = mp.Pool()._processes-1
+pool = mp.Pool(processes=nprocs)
+# result = [pool.map_async(power_sim, seed) for seed in [1,2,3]]
+result = pool.map_async(power_sim, random_grid)
+result_ls = result.get()
+result_df = pd.DataFrame(result_ls)
+result_df.columns = ["pvalues", "test_result"]
+```
+
+Finally, calculating the power:
+
+```{python}
+np.mean(result_df[["test_result"]])
+```
+
+:::
+
+Great! The null was rejected for around 80\% of simulations which is in line with the original power analysis. Increasing the simulation number should see this get closer to 80\%.
+
+The original use case of this experiment was to consider different treatment and control group sizes. The original power test analysis assumes equal sample sizes in treatment and control. Instead of looking for an appropriate statistical test, I can just reset the parameters above to have 70\% treatment and 30\% control proportions.
