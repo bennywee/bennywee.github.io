@@ -1,0 +1,15 @@
+{
+  "hash": "3d3c11cdc07aca500f83761f1dbaabec",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Master's presentation to Adelaide data science group\ndate: 2025-04-24\nengine: knitr\npdf: \"presentation.pdf\"\n---\n\n\nMaster's research presentation on stochastic volatility and simulation based calibration to the Adelaide data science group on November 2023.\n\n# Abstract\n\nSimulation Based Calibration (SBC) (Talts, Betancourt, Simpson, Vehtari, & Gelman, 2020) is applied to analyse two commonly used, competing Markov chain Monte Carlo algorithms for estimating the posterior distribution of a stochastic volatility model. In particular, the bespoke ‘off-set mixture approximation’ algorithm proposed by Kim, Shephard, and Chib (1998) is explored together with a Hamiltonian Monte Carlo algorithm implemented through Stan (Stan Development Team, 2023). The SBC analysis involves a simulation study to assess whether each sampling algorithm has the capacity to produce valid inference for the correctly specified model, while also characterising statistical efficiency through the effective sample size. Results show that Stan’s No-U-Turn sampler, an implementation of Hamiltonian Monte Carlo, produces a well-calibrated posterior estimate while the celebrated off-set mixture approach is less efficient and poorly calibrated, though model parameterisation also plays a role.\n\n\n::: {.cell}\n<style type=\"text/css\">\n#title-block-header .description {\n    display: none;\n}\n</style>\n:::\n\n::: {.cell}\n<style type=\"text/css\">\n.embed-container {\n    position: relative;\n    padding-bottom: 129%;\n    height: 0;\n    overflow: hidden;\n    max-width: 100%;\n}\n\n.embed-container iframe,\n.embed-container object,\n.embed-container embed {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n}\n</style>\n:::\n\n```{=html}\n<div class=\"embed-container\">\n  <iframe src=\"presentation.pdf\" style=\"border: 0.5px\"></iframe>\n</div>\n```",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
