@@ -6,7 +6,7 @@ engine: knitr
 pdf: "presentation.pdf"
 ---
 
-Master's research presentation on stochastic volatility and simulation based calibration to the Adelaide data science group on November 2023.
+Master's research presentation on stochastic volatility and simulation based calibration to the Adelaide data science group on November 2023. Full paper on arxiv: [https://arxiv.org/abs/2402.12384](https://arxiv.org/abs/2402.12384).
 
 # Abstract
 
